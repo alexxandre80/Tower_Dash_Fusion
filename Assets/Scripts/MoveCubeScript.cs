@@ -1,0 +1,132 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Experimental.Rendering;
+
+public class MoveCubeScript : MonoBehaviour
+{
+    [SerializeField]
+    private Transform targetTransform;
+
+    [SerializeField]
+    private float moveSpeed;
+
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+    
+    
+    private PhotonView photonview;
+
+
+    private Vector3 targetPosition;
+    private Quaternion TargetRotation;
+    public float health;
+    public float maxHealth;
+    public float notoriety;
+    public float damageStone;
+    public float damagePaper;
+    public float damageScissor;
+    public int inFight;
+    public float movementSpeed;
+    
+    
+    
+    void Awake()
+    {
+        photonview = GetComponent<PhotonView>();
+    }
+    
+        void Update()
+    {
+        
+        //Quand il s'agit de mon joueur on check nos propres input pour le faire bouger à l'aide de la fonction checkInput
+        if (photonview.isMine)
+        {
+            checkInput();
+        }
+        
+        //Pour tous les autres on utilise smoothSyncMovement qui s'occupe de rendre les mouvement des autres joueurs fluides
+        else
+        {
+            smoothSyncMovement();
+        }
+
+    }
+    
+    
+    //appelé à chaque fois qu'on reçoit un paquet pour l'objet ( comme ce script est attaché à autoritaire player dans notre cas c'est autoritaire player )
+    private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        // Si il s'agit de notre joueur et que donc on écrit les data à envoyer dans notre paquet
+        // On envoie notre pisition et notre rotation
+        if (stream.isWriting)
+        {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+        }
+        
+        // Dans le cas où on reçoit des données d'autres joueurs
+        // On les stock dans les valeur targetPosition et targetRotation
+        // On réutilise ses variable dans la fonction smoothSyncMovement
+        else
+        {
+            targetPosition = (Vector3) stream.ReceiveNext();
+            TargetRotation = (Quaternion) stream.ReceiveNext();
+        }
+    }
+    
+    //Cette fonction permet de rendre les déplacement sur les écran des autres joueurs plus fluides
+    private void smoothSyncMovement()
+    {
+        transform.position = Vector3.Lerp(transform.position, targetPosition,0.25f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, 500 * Time.deltaTime);
+    }
+
+    private void checkInput()
+    {
+        if (Input.GetKey(KeyCode.S))
+        {
+            targetTransform.position +=
+                Vector3.back * Time.deltaTime * moveSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.Z))
+        {
+            targetTransform.position +=
+                Vector3.forward * Time.deltaTime * moveSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            targetTransform.position +=
+                Vector3.left * Time.deltaTime * moveSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            targetTransform.position +=
+                Vector3.right * Time.deltaTime * moveSpeed;
+        }
+        
+        // if (Input.GetKeyDown(KeyCode.K))
+        // {
+        //     Fire();
+        // }
+
+    }
+    
+    void Fire()
+    {
+        //Creation de la balle à partir du prefab "Bullet"
+        var bullet = (GameObject) Instantiate(
+            bulletPrefab,
+            bulletSpawn.position,
+            bulletSpawn.rotation);
+        
+        //Ajout de velocite a la ball
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+        
+        //Destruction de la balle apres 2 seconde
+        Destroy(bullet, 2.0f);
+    }
+}

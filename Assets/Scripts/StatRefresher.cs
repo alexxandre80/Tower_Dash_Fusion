@@ -5,14 +5,8 @@ using UnityEngine;
 public class StatRefresher : MonoBehaviour
 {
     
-    private float health;
-    private float maxHealth;
-    private float notoriety;
-    private float damageStone;
-    private float damagePaper;
-    private float damageScissor;
-    private int inFight;
-    private float movementSpeed;
+    private int health;
+    private int energy;
     private PhotonView photonView;
 
     private void Awake()
@@ -39,15 +33,10 @@ public class StatRefresher : MonoBehaviour
                 {
                 
                     health = PlayerManagement.Instance.listeInfoJoueurs[index].health;
-                    maxHealth = PlayerManagement.Instance.listeInfoJoueurs[index].maxHealth;
-                    notoriety = PlayerManagement.Instance.listeInfoJoueurs[index].notoriety;
-                    damageStone = PlayerManagement.Instance.listeInfoJoueurs[index].damageStone;
-                    damagePaper = PlayerManagement.Instance.listeInfoJoueurs[index].damagePaper;
-                    damageScissor = PlayerManagement.Instance.listeInfoJoueurs[index].damageScissor;
-                    inFight = PlayerManagement.Instance.listeInfoJoueurs[index].inFight;
-                    movementSpeed = PlayerManagement.Instance.listeInfoJoueurs[index].movementSpeed;
-                
-                    photonView.RPC("RPC_UpdateStats", PhotonTargets.All,  playerGameObject.GetPhotonView().owner, health, maxHealth, notoriety, damageStone, damagePaper, damageScissor, inFight, movementSpeed);
+                    energy = PlayerManagement.Instance.listeInfoJoueurs[index].energy;
+
+
+                    photonView.RPC("RPC_UpdateStats", PhotonTargets.All,  playerGameObject.GetPhotonView().owner, health, energy);
                 
                     UnityEngine.Debug.Log("taille de la liste de joueur : " + PlayerManagement.Instance.listeInfoJoueurs.Count);
 
@@ -66,7 +55,7 @@ public class StatRefresher : MonoBehaviour
     }
     
     [PunRPC]
-    private void RPC_UpdateStats(PhotonPlayer unPhotonPlayer, float health, float maxHealth, float notoriety, float damageStone, float damagePaper, float damageScissor, int inFight, float movementSpeed)
+    private void RPC_UpdateStats(PhotonPlayer unPhotonPlayer, int health, int energy)
     {
 
         int count = 0;
@@ -77,14 +66,11 @@ public class StatRefresher : MonoBehaviour
             if (playerGameObject.GetPhotonView().owner ==  unPhotonPlayer)
             {
 
-                playerGameObject.GetComponent<PlayerMovement>().health = health;
-                playerGameObject.GetComponent<PlayerMovement>().maxHealth = maxHealth;
-                playerGameObject.GetComponent<PlayerMovement>().notoriety = notoriety;
-                playerGameObject.GetComponent<PlayerMovement>().damageStone = damageStone;
-                playerGameObject.GetComponent<PlayerMovement>().damagePaper = damagePaper;
-                playerGameObject.GetComponent<PlayerMovement>().damageScissor = damageScissor;
-                playerGameObject.GetComponent<PlayerMovement>().inFight = inFight;
-                playerGameObject.GetComponent<PlayerMovement>().movementSpeed = movementSpeed;
+                playerGameObject.GetComponent<Health>().currentHealth = health;
+                
+                playerGameObject.GetComponent<Energy>().energy = energy;
+                
+               
                 
                 UnityEngine.Debug.Log("le joueur " + unPhotonPlayer.ID + " est présent");
                 

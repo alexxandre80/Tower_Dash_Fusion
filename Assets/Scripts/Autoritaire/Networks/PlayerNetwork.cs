@@ -105,16 +105,6 @@ public class PlayerNetwork : MonoBehaviour
         photonView.RPC("RPC_newStoneDamage",PhotonTargets.All, unPhotonPlayer, stoneDamage);
     }
     
-    [PunRPC]
-    private void RPC_newStoneDamage(PhotonPlayer unPhotonPlayer, float stoneDamage)
-    {
-        int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == unPhotonPlayer);
-        if (index != -1)
-        {
-            PlayerManagement.Instance.listeInfoJoueurs[index].damageStone += stoneDamage;
-            
-        }
-    }
     
 
     [PunRPC]

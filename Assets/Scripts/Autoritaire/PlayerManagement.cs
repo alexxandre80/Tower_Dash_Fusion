@@ -36,15 +36,10 @@ public class PlayerManagement : MonoBehaviour
         int index = listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == unPhotonPlayer);
         if (index == -1)
         {
-            listeInfoJoueurs.Add(new PlayerStats(unPhotonPlayer, 100, 100, 30, 30, 30 ,1f));
+            listeInfoJoueurs.Add(new PlayerStats(unPhotonPlayer, 100, 100, 50, 50));
         }
     }
 
-    // Fonction qui sera utilisée pour tout les objets qui vont altérer les dégats de pierre d'un joueur en particulier
-    public void modifyStoneDamage(PhotonPlayer unPhotonPlayer, int value)
-    {
-        PlayerNetwork.instance.newStoneDamage(unPhotonPlayer, value);
-    }
 }
 
 
@@ -55,28 +50,20 @@ public class PlayerStats
 {
     
     public readonly PhotonPlayer photonPlayerJoueur;
-    public float health;
-    public float maxHealth;
-    public float notoriety;
-    public float damageStone;
-    public float damagePaper;
-    public float damageScissor;
-    public int inFight;
-    public float movementSpeed;
+    public int health;
+    public int maxHealth;
+    public int energy;
+    public int maxEnergy;
     
     
-    public PlayerStats(PhotonPlayer unPhotonPLayer, float vieInitiale, float maxHealthInitiale, float damagePaperInitiale, float damageScissorInitiale, float damageStoneInitiale, float movementspeedInitiale )
+    public PlayerStats(PhotonPlayer unPhotonPLayer, int vieInitiale, int maxHealthInitiale, int energieInitiale, int maxEnergieInitiale)
     {
 
         photonPlayerJoueur = unPhotonPLayer;
         health = vieInitiale;
         maxHealth = maxHealthInitiale;
-        notoriety = 0;
-        damageStone = damageStoneInitiale;
-        damagePaper = damagePaperInitiale;
-        damageScissor = damageScissorInitiale;
-        inFight = 0;
-        movementSpeed = movementspeedInitiale;
+        energy = energieInitiale;
+        maxEnergy = maxEnergieInitiale;
 
 
     }

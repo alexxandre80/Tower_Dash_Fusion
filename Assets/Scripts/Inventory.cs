@@ -7,14 +7,15 @@ public class Inventory : MonoBehaviour
 {
 
 	bool activation = false;
-	GameObject Panel;
+	[SerializeField]
+	private GameObject Panel;
 	public int[] tabSlots;
 
     void Start()
     {
         //GetComponent<Canvas>().enabled = false;
         Panel = transform.GetChild (0).gameObject;
-        tabSlots = new int[Panel.transform.childCount];
+        tabSlots = new int[6];
     }
 
    

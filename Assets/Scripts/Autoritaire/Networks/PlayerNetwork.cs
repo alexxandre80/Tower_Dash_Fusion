@@ -87,6 +87,10 @@ public class PlayerNetwork : MonoBehaviour
         // Le master client complète la liste à chaque fois qu'un joueur rejoins la partie
         photonView.RPC("RPC_AddPlayerToLIst", PhotonTargets.MasterClient, unPhotonPlayer);
         
+        //On instantie le statRefresher qui va s'occuper d'importer les info de la liste du master client vers tous les gameobject joueur de la scene 
+        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "StatRefresher"), Vector3.up * 1,
+            Quaternion.identity, 0);
+        
         
         print("le joueur a été ajouté : " + unPhotonPlayer.ID);
         nbJoueurs = nbJoueurs + 1;

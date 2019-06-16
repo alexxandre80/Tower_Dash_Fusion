@@ -55,6 +55,8 @@ public class PlayerStats
     public int energy;
     public int maxEnergy;
     
+    public int[] tabSlots; 
+    
     
     public PlayerStats(PhotonPlayer unPhotonPLayer, int vieInitiale, int maxHealthInitiale, int energieInitiale, int maxEnergieInitiale)
     {
@@ -64,6 +66,7 @@ public class PlayerStats
         maxHealth = maxHealthInitiale;
         energy = energieInitiale;
         maxEnergy = maxEnergieInitiale;
+        tabSlots = tabSlots = new int[6];
 
 
     }

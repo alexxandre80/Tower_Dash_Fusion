@@ -59,4 +59,6 @@ MonoBehaviour:
   - RPC_UpdateMovementSpeed
   - RPC_UpdateNotoriety
   - RPC_UpdateStats
+  - RPC_AddInInventory
+  - RPC_AskAddInInventory
   DisableAutoOpenWizard: 1

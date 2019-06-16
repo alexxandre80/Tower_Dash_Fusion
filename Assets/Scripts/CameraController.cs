@@ -27,13 +27,7 @@ public class CameraController : MonoBehaviour
         {
             Debug.Log("Camera instancie");
         }
-        
-        
-        
-        
-       
-        
-        
+
         
     }
 
@@ -50,16 +44,15 @@ public class CameraController : MonoBehaviour
         
         foreach (var joueur in  GameObject.FindGameObjectsWithTag("Joueur"))
         {
-            Debug.Log("On rentre dans la boucle");
             if (PhotonNetwork.player == joueur.GetComponent<PhotonView>().owner)
             {
                 leJoueur = joueur;
-                Debug.Log("le joueur a été trouvé");
+                
             }
 
             else
             {
-                Debug.Log("mabite");
+               
             }
         }
         

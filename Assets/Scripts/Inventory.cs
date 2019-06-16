@@ -9,6 +9,10 @@ public class Inventory : MonoBehaviour
 	bool activation = false;
 	[SerializeField]
 	private GameObject Panel;
+
+	[SerializeField]
+	private GameObject inventaireCanvas;
+	
 	public int[] tabSlots;
 
     void Start()
@@ -32,7 +36,7 @@ public class Inventory : MonoBehaviour
 
     public void UpdateTXT(int nrSlot, string txt){
 
-    	Panel.transform.GetChild(nrSlot).GetChild(1).GetComponent<Text>().text = txt;
+	    inventaireCanvas.transform.GetChild(0).GetChild(nrSlot).GetChild(1).GetComponent<Text>().text = txt;
 
     }
 }

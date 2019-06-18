@@ -20,14 +20,16 @@ public class GrabConsumable : MonoBehaviour
     void OnTriggerEnter(Collider col)
     {
 	    
-	    if (photonView.isMine)
+	    if (PhotonNetwork.isMasterClient)
 	    {
 		    switch(col.gameObject.tag){
 
 			    //en fonction des comsommables et de leur tags cela met a jour le nb d'item et detruit l'objet 
 			    //"case" a faire pour chaque consommable
 			    case "Slot": //apple
-				    photonView.RPC("RPC_AskAddInInventory",PhotonTargets.MasterClient, photonView.owner, 0);
+				    photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 0);
+				    
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId());
 				    
 				    break;
         	
@@ -57,6 +59,36 @@ public class GrabConsumable : MonoBehaviour
 
 
 		    PlayerManagement.Instance.listeInfoJoueurs[index].tabSlots[slot] += 1;
+
+
+    }
+    
+    [PunRPC]
+    private void RPC_returnToPool(int id)
+    {
+	    
+
+	    int i = 0;
+	    int flag = 0;
+
+	    while (i <  GameObject.FindGameObjectsWithTag("Slot").Length && flag!=1)
+	    {
+		    
+		    if (GameObject.FindGameObjectsWithTag("Slot")[i].GetComponent<ItemExposerScript>().GetId() == id)
+		    {
+			    ItemGeneratorScript.instance.destroyApple(GameObject.FindGameObjectsWithTag("Slot")[i]
+				    .GetComponent<ItemExposerScript>());
+			    
+			    Debug.Log("on trouve la pomme à détruire");
+
+			    flag = 1;
+			    
+
+		    }
+
+		    i = i + 1;
+		    
+	    }
 
 
     }

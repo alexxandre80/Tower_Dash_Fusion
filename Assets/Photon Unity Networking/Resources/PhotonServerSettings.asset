@@ -61,4 +61,6 @@ MonoBehaviour:
   - RPC_UpdateStats
   - RPC_AddInInventory
   - RPC_AskAddInInventory
+  - GenererAppleRPC
+  - RPC_returnToPool
   DisableAutoOpenWizard: 1

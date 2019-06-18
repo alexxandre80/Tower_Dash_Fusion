@@ -19,6 +19,7 @@ public class PlayerNetwork : MonoBehaviour
     public string name { get; private set; }
     private PhotonView photonView;
     private int nbJoueurs;
+    public int allConnected = 0;
 
     private PlayerMovement currentPlayer;
     
@@ -97,6 +98,7 @@ public class PlayerNetwork : MonoBehaviour
 
         if (nbJoueurs == PhotonNetwork.playerList.Length)
         {
+            allConnected = 1;
             print("tous les joueurs ont rejoint la partie");
             photonView.RPC("RPC_CreatePlayer", PhotonTargets.All);
             
@@ -133,8 +135,5 @@ public class PlayerNetwork : MonoBehaviour
 
 
     }
-    
 
-
- 
 }

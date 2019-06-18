@@ -283,6 +283,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="AIntentReceiver.cs" t="Include" />
+          <e p="AppleId.cs" t="Include" />
           <e p="Autoritaire" t="Include">
             <e p="CreateRoom" t="Include">
               <e p="CreateRoom.cs" t="Include" />
@@ -323,6 +324,8 @@
           <e p="Health.cs" t="Include" />
           <e p="HealthBarController.cs" t="Include" />
           <e p="Inventory.cs" t="Include" />
+          <e p="ItemExposerScript.cs" t="Include" />
+          <e p="ItemGeneratorScript.cs" t="Include" />
           <e p="Joystick.cs" t="Include" />
           <e p="LevelManager.cs" t="Include" />
           <e p="Main.cs" t="Include" />

@@ -63,4 +63,8 @@ MonoBehaviour:
   - RPC_AskAddInInventory
   - GenererAppleRPC
   - RPC_returnToPool
+  - RPC_AskToFire
+  - Fire
+  - RPC_Fire
+  - RPC_Destruction
   DisableAutoOpenWizard: 1

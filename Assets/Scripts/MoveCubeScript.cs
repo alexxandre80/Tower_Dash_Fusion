@@ -108,25 +108,41 @@ public class MoveCubeScript : MonoBehaviour
                 Vector3.right * Time.deltaTime * moveSpeed;
         }
         
-        // if (Input.GetKeyDown(KeyCode.K))
-        // {
-        //     Fire();
-        // }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
+        }
 
     }
-    
-    void Fire()
+
+
+    [PunRPC]
+    private void RPC_AskToFire(PhotonPlayer unPhotonPlayer)
     {
-        //Creation de la balle à partir du prefab "Bullet"
-        var bullet = (GameObject) Instantiate(
-            bulletPrefab,
-            bulletSpawn.position,
-            bulletSpawn.rotation);
+
+        photonview.RPC("RPC_Fire", PhotonTargets.All, unPhotonPlayer);
         
-        //Ajout de velocite a la ball
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+    }
+
+
+    [PunRPC]
+    private void RPC_Fire(PhotonPlayer unPhotonPlayer)
+    {
+        if (unPhotonPlayer == photonview.owner)
+        {
+            //Creation de la balle à partir du prefab "Bullet"
+            var bullet = (GameObject) Instantiate(
+                bulletPrefab,
+                bulletSpawn.position,
+                bulletSpawn.rotation);
         
-        //Destruction de la balle apres 2 seconde
-        Destroy(bullet, 2.0f);
+            //Ajout de velocite a la ball
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 18;
+        
+            //Destruction de la balle apres 2 seconde
+            Destroy(bullet, 0.5f);
+        }
+        
+        
     }
 }

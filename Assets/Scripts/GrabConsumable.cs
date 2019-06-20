@@ -16,6 +16,9 @@ public class GrabConsumable : MonoBehaviour
 
     // Start is called before the first frame update
 
+
+    
+    
     // dès qu'il y a un collider
     void OnTriggerEnter(Collider col)
     {
@@ -31,20 +34,47 @@ public class GrabConsumable : MonoBehaviour
 				    
 				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId());
 				    
-				    break;
+				break;
+			    
+			    case "bullet": //bullets
+					
+				    Debug.Log("un joueur s'est fait toucher.");
+				    
+				    if (PhotonNetwork.isMasterClient)
+				    {
+					    int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
+					    PlayerManagement.Instance.listeInfoJoueurs[index].health -= 10;
+					    
+				    }
+				    
+				break;
+				
         	
 		    }
 	    }
 		
         
     }
+
+    public void destruction()
+    {
+	    photonView.RPC("RPC_Destruction",PhotonTargets.All);
+    }
+    
+    [PunRPC]
+    private void RPC_Destruction()
+    {
+
+	    PhotonNetwork.Destroy(gameObject);
+
+    }
     
     [PunRPC]
     private void RPC_AskAddInInventory(PhotonPlayer unPhotonPlayer, int slot)
     {
 	    
-		    photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, unPhotonPlayer, slot);
-		    Debug.Log("GrabConsumable : rpc au serveur envoyé, demande d'add à l'inventaire.");
+	    photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, unPhotonPlayer, slot);
+	    Debug.Log("GrabConsumable : rpc au serveur envoyé, demande d'add à l'inventaire.");
 
     }
     

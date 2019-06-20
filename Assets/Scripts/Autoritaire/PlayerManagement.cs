@@ -10,10 +10,10 @@ public class PlayerManagement : MonoBehaviour
     //On fait de cette classe un singleton 
     public static PlayerManagement Instance;
     private PhotonView serverPhotonView;
-    
+
     // La fameuse liste qui va contenir toutes nos info de joueur dans le serveur
     private List<PlayerStats> _listeInfoJoueurs = new List<PlayerStats>();
-    
+
     private PhotonView photonView;
 
     public List<PlayerStats> listeInfoJoueurs
@@ -40,25 +40,51 @@ public class PlayerManagement : MonoBehaviour
         }
     }
 
-}
+    private void Update()
+    {
+        foreach (PlayerStats player in listeInfoJoueurs)
+        {
+            if (player.health <= 0)
+            {
+                foreach (var playerGameObject in GameObject.FindGameObjectsWithTag("Joueur"))
+                {
+           
+            
+                    if (playerGameObject.GetPhotonView().owner ==  player.photonPlayerJoueur)
+                    {
+
+                        playerGameObject.GetComponent<GrabConsumable>().destruction();
+
+                    }
+
+            
+                }
+            }
+        }
+    }
+
 
 
 
 //Cette classe sera le type utilisé pour stocker nos informations de joueurs dans le serveur
 //On aura une liste de PlayerStats
+   
+}
+
 public class PlayerStats
 {
-    
+
     public readonly PhotonPlayer photonPlayerJoueur;
     public int health;
     public int maxHealth;
     public int energy;
     public int maxEnergy;
-    
-    public int[] tabSlots; 
-    
-    
-    public PlayerStats(PhotonPlayer unPhotonPLayer, int vieInitiale, int maxHealthInitiale, int energieInitiale, int maxEnergieInitiale)
+
+    public int[] tabSlots;
+
+
+    public PlayerStats(PhotonPlayer unPhotonPLayer, int vieInitiale, int maxHealthInitiale, int energieInitiale,
+        int maxEnergieInitiale)
     {
 
         photonPlayerJoueur = unPhotonPLayer;

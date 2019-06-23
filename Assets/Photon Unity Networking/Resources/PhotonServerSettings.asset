@@ -67,4 +67,5 @@ MonoBehaviour:
   - Fire
   - RPC_Fire
   - RPC_Destruction
+  - GenererBananaRPC
   DisableAutoOpenWizard: 1

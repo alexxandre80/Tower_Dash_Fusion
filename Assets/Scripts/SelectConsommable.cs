@@ -31,6 +31,26 @@ public class SelectConsommable : MonoBehaviour
         		case 0: //apple
         		GameObject.Find("Health Canvas").GetComponent<Energy>().energy += 5;
         		break;
+
+        		case 1: //banana
+        		GameObject.Find("Health Canvas").GetComponent<Energy>().energy += 10;
+        		break;
+
+        		case 2: //greenpotion
+        		GameObject.Find("Health Canvas").GetComponent<Energy>().energy += 50;
+        		break;
+
+        		case 3: //orangepotion
+        		GameObject.Find("Health Canvas").GetComponent<Energy>().energy += 15;
+        		break;
+
+        		case 4: //redpotion
+        		GameObject.Find("Health Canvas").GetComponent<Energy>().energy -= 50;
+        		break;
+
+        		//case 0: //supergun
+        		
+        		//break;
         	}
 
     	}

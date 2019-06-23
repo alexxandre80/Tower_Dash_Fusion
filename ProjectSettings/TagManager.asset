@@ -16,6 +16,8 @@ TagManager:
   - Stats
   - Slot
   - bullet
+  - apple
+  - banana
   layers:
   - Default
   - TransparentFX

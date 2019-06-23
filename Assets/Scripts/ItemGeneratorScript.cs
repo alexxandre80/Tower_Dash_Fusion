@@ -11,6 +11,7 @@ public class ItemGeneratorScript : MonoBehaviour
     private int flag = 0;
     [Header ("Références")]
     [SerializeField] private GameObject applePrefab;
+    [SerializeField] private GameObject bananaPrefab;
     [SerializeField] private PhotonView photonView;
 
     [Header("Pooling des items")]
@@ -18,6 +19,9 @@ public class ItemGeneratorScript : MonoBehaviour
     private Queue<ItemExposerScript> appleLibres = new Queue<ItemExposerScript>(5);
     private List<ItemExposerScript> applePlacees = new List<ItemExposerScript>(5);
 
+    private ItemExposerScript[] BananaInstanciees;
+    private Queue<ItemExposerScript> bananaLibres = new Queue<ItemExposerScript>(5);
+    private List<ItemExposerScript> bananaPlacees = new List<ItemExposerScript>(5);
 
 
     //génération du pooling des items
@@ -25,10 +29,12 @@ public class ItemGeneratorScript : MonoBehaviour
     {
         instance = this;
         GameObject apple;
+        GameObject banana;
 
         //instancier toutes les armes possibles au cours d'une partie
         //pour les armes rouges, il n'y en a qu'une par biome donc 5 armes rouges possibles
         AppleInstanciees = new ItemExposerScript[5];
+        BananaInstanciees = new ItemExposerScript[5];
 
         //génération des 5 armes rouges
         for(int i = 0; i < 5; i++)
@@ -37,6 +43,15 @@ public class ItemGeneratorScript : MonoBehaviour
 			apple.GetComponent<ItemExposerScript>().SetId(i);
             AppleInstanciees[i] = apple.GetComponent<ItemExposerScript>();
             appleLibres.Enqueue(AppleInstanciees[i]);
+        }
+
+        //génération des bananes
+        for(int i = 0; i < 5; i++)
+        {
+            banana = (GameObject)Instantiate(bananaPrefab);
+            banana.GetComponent<ItemExposerScript>().SetId(i);
+            BananaInstanciees[i] = banana.GetComponent<ItemExposerScript>();
+            bananaLibres.Enqueue(BananaInstanciees[i]);
         }
         
         /*if (PhotonNetwork.isMasterClient)
@@ -67,11 +82,16 @@ public class ItemGeneratorScript : MonoBehaviour
                 x = x + 3;
                 Vector3 position = new Vector3(x, -0.9f, -20.0f);
                 photonView.RPC("GenererAppleRPC", PhotonTargets.All, position);
-                
                 Debug.Log("GenererAppleRPC appelé taille de apple item  " + appleLibres.Count);
-                    
+                
+                //position = new Vector3(x, -3f, -40.0f);
+                //photonView.RPC("GenererBananaRPC", PhotonTargets.All, position);
+                //Debug.Log("GenererBananaRPC appelé taille de apple item  " + bananaLibres.Count);
+                
+                
             }
 
+            
             flag = 1;
         }
 
@@ -127,6 +147,50 @@ public class ItemGeneratorScript : MonoBehaviour
     }
 
 
+    public void GenererBanana(Vector3 position)
+    {
+        if(PhotonNetwork.isMasterClient)
+        {
+            photonView.RPC("GenererBananaRPC", PhotonTargets.All, position);
+        }
+    }
+
+    [PunRPC]
+    private void GenererBananaRPC(Vector3 position)
+    {
+        //faire spawn une arme verte
+        var banana = bananaLibres.Dequeue();
+
+        //activation de l'item
+        banana.ActivationItem();
+        banana.SetPosition(position);
+
+        //ajout de l'item dans la liste des items placés
+        bananaPlacees.Add(banana);
+        
+        Debug.Log("la banane est placée");
+    }
+    
+    public void destroyBanana(ItemExposerScript uneBanana)
+    {
+        //faire spawn une arme verte
+        bananaLibres.Enqueue(uneBanana);
+
+        //activation de l'item
+        uneBanana.DesactivationItem();
+        
+
+        //ajout de l'item dans la liste des items placés
+        bananaPlacees.Remove(uneBanana);
+        
+        Debug.Log("la banane est détruite");
+    }
+    
+    
+
+
+
+
     public void GenererApple(Vector3 position)
     {
         if(PhotonNetwork.isMasterClient)
@@ -165,7 +229,5 @@ public class ItemGeneratorScript : MonoBehaviour
         
         Debug.Log("la pomme est détruite");
     }
-    
-    
     
 }

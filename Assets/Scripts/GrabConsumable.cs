@@ -29,10 +29,10 @@ public class GrabConsumable : MonoBehaviour
 
 			    //en fonction des comsommables et de leur tags cela met a jour le nb d'item et detruit l'objet 
 			    //"case" a faire pour chaque consommable
-			    case "Slot": //apple
+			    case "apple": //apple
 				    photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 0);
 				    
-				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId());
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "apple");
 				    
 				break;
 			    
@@ -49,6 +49,51 @@ public class GrabConsumable : MonoBehaviour
 				    
 				break;
 				
+
+				case "banana": //banana
+
+					photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 1);
+				    
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "banana");
+
+	                //Inventory_script.tabSlots[1] = Inventory_script.tabSlots[1] + 1; 
+	                //Inventory_script.UpdateTXT(1,Inventory_script.tabSlots[1].ToString());
+	                //Destroy (col.gameObject);
+	            break;
+
+
+	            case "greenpotion": //greenPotion
+
+	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 2);
+				    
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "greenpotion");
+	            break;
+
+	            case "orangepotion": //orangePotion
+
+	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 3);
+				    
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "orangepotion");
+
+	            break;
+
+	            case "redpotion": //redPotion
+
+	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 4);
+				    
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "redpotion");
+
+	            break;
+
+	            case "supergun": //superGun
+
+	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 5);
+				    
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "supergun");
+
+	            break;
+
+
         	
 		    }
 	    }
@@ -94,19 +139,19 @@ public class GrabConsumable : MonoBehaviour
     }
     
     [PunRPC]
-    private void RPC_returnToPool(int id)
+    private void RPC_returnToPool(int id, string tag)
     {
 	    
 
 	    int i = 0;
 	    int flag = 0;
 
-	    while (i <  GameObject.FindGameObjectsWithTag("Slot").Length && flag!=1)
+	    while (i <  GameObject.FindGameObjectsWithTag(tag).Length && flag!=1)
 	    {
 		    
-		    if (GameObject.FindGameObjectsWithTag("Slot")[i].GetComponent<ItemExposerScript>().GetId() == id)
+		    if (GameObject.FindGameObjectsWithTag(tag)[i].GetComponent<ItemExposerScript>().GetId() == id)
 		    {
-			    ItemGeneratorScript.instance.destroyApple(GameObject.FindGameObjectsWithTag("Slot")[i]
+			    ItemGeneratorScript.instance.destroyApple(GameObject.FindGameObjectsWithTag(tag)[i]
 				    .GetComponent<ItemExposerScript>());
 			    
 			    Debug.Log("on trouve la pomme à détruire");

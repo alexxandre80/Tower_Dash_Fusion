@@ -18,6 +18,8 @@ TagManager:
   - bullet
   - apple
   - banana
+  - ddol
+  - TopPanel
   layers:
   - Default
   - TransparentFX

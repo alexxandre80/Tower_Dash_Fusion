@@ -316,6 +316,7 @@
           <e p="CameraMotor.cs" t="Include" />
           <e p="Deplacement.cs" t="Include" />
           <e p="DesiredAspectRatio.cs" t="Include" />
+          <e p="EndGameUI.cs" t="Include" />
           <e p="EnemySpawner.cs" t="Include" />
           <e p="Energy.cs" t="Include" />
           <e p="FightTrigger.cs" t="Include" />

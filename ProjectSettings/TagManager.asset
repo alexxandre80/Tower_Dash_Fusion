@@ -16,6 +16,8 @@ TagManager:
   - Stats
   - Slot
   - bullet
+  - ddol
+  - TopPanel
   layers:
   - Default
   - TransparentFX

@@ -1,17 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GrabConsumable : MonoBehaviour
 {
 	[SerializeField]
 	private Inventory Inventory_script;
 	
+	[SerializeField]
+	private GameObject quitMenu;
+	
 	private PhotonView photonView;
+	
+	
 	
 	private void Awake()
 	{
 		photonView = GetComponent<PhotonView>();
+		
 	}
 
     // Start is called before the first frame update
@@ -66,6 +73,14 @@ public class GrabConsumable : MonoBehaviour
     {
 
 	    PhotonNetwork.Destroy(gameObject);
+	    if (PhotonNetwork.player == photonView.owner)
+	    {
+		    Debug.Log("taille de la liste de panel :" + GameObject.FindGameObjectsWithTag("TopPanel").Length);
+		    quitMenu = GameObject.FindGameObjectsWithTag("TopPanel")[0].GetComponent<EndGameUI>().topPanel;
+		    GameObject.FindGameObjectsWithTag("TopPanel")[0].GetComponent<EndGameUI>().text.text = "Vous avez été tué";
+		    Debug.Log("on rentre dans le if d'affichage de menu");
+		    quitMenu.SetActive(true);
+	    }
 
     }
     

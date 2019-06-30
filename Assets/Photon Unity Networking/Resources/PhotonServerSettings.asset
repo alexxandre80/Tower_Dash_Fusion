@@ -68,4 +68,5 @@ MonoBehaviour:
   - RPC_Fire
   - RPC_Destruction
   - GenererBananaRPC
+  - RPC_AskAddPlayerToLIst
   DisableAutoOpenWizard: 1

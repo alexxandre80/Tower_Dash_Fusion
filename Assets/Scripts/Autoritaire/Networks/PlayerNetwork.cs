@@ -62,8 +62,9 @@ public class PlayerNetwork : MonoBehaviour
 
     private void masterLoadedGame()
     {
-        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "PlayerManagement"), Vector3.up * 1,
-            Quaternion.identity, 0);
+        /*PhotonNetwork.Instantiate(Path.Combine("Prefabs", "PlayerManagement"), Vector3.up * 1,
+            Quaternion.identity, 0);*/
+        
         photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player);
         photonView.RPC("RPC_LoadGameOthers", PhotonTargets.Others);
         
@@ -71,6 +72,8 @@ public class PlayerNetwork : MonoBehaviour
     
     private void nonMasterLoadedGame()
     {
+        /*PhotonNetwork.Instantiate(Path.Combine("Prefabs", "PlayerManagement"), Vector3.up * 1,
+            Quaternion.identity, 0);*/
         photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player);
         
     }
@@ -85,12 +88,13 @@ public class PlayerNetwork : MonoBehaviour
     private void RPC_LoadedGameScene(PhotonPlayer unPhotonPlayer)
     {
         
+        
         // Le master client complète la liste à chaque fois qu'un joueur rejoins la partie
         photonView.RPC("RPC_AddPlayerToLIst", PhotonTargets.MasterClient, unPhotonPlayer);
         
         //On instantie le statRefresher qui va s'occuper d'importer les info de la liste du master client vers tous les gameobject joueur de la scene 
-        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "StatRefresher"), Vector3.up * 1,
-            Quaternion.identity, 0);
+        //PhotonNetwork.Instantiate(Path.Combine("Prefabs", "StatRefresher"), Vector3.up * 1,
+        //Quaternion.identity, 0);
         
         
         print("le joueur a été ajouté : " + unPhotonPlayer.ID);
@@ -101,6 +105,7 @@ public class PlayerNetwork : MonoBehaviour
             allConnected = 1;
             print("tous les joueurs ont rejoint la partie");
             photonView.RPC("RPC_CreatePlayer", PhotonTargets.All);
+            photonView.RPC("RPC_AskAddPlayerToLIst", PhotonTargets.MasterClient);
             
         }
 
@@ -134,6 +139,28 @@ public class PlayerNetwork : MonoBehaviour
         print("le nombre de joueur dans la liste du player management : " + PlayerManagement.Instance.listeInfoJoueurs.Count);
 
 
+    }
+    
+    [PunRPC]
+    private void RPC_AskAddPlayerToLIst()
+    {
+
+        foreach (PlayerStats player in PlayerManagement.Instance.listeInfoJoueurs)
+        {
+            photonView.RPC("RPC_AddPlayerToLIst", PhotonTargets.Others, player.photonPlayerJoueur);
+        }
+    
+
+    }
+
+    public int getnbJoueur()
+    {
+        return nbJoueurs;
+    }
+    
+    public void setnbJoueur(int nb)
+    {
+        nbJoueurs =  nb;
     }
 
 }

@@ -40,28 +40,7 @@ public class PlayerManagement : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        foreach (PlayerStats player in listeInfoJoueurs)
-        {
-            if (player.health <= 0)
-            {
-                foreach (var playerGameObject in GameObject.FindGameObjectsWithTag("Joueur"))
-                {
-           
-            
-                    if (playerGameObject.GetPhotonView().owner ==  player.photonPlayerJoueur)
-                    {
 
-                        playerGameObject.GetComponent<GrabConsumable>().destruction();
-
-                    }
-
-            
-                }
-            }
-        }
-    }
 
 
 

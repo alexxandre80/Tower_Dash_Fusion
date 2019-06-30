@@ -44,16 +44,16 @@ public class GrabConsumable : MonoBehaviour
 				break;
 			    
 			    case "bullet": //bullets
-					
-				    Debug.Log("un joueur s'est fait toucher.");
-				    
-				    if (PhotonNetwork.isMasterClient)
-				    {
+
+
 					    int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
 					    PlayerManagement.Instance.listeInfoJoueurs[index].health -= 10;
-					    
+				    if (PlayerManagement.Instance.listeInfoJoueurs[index].health <= 0)
+				    {
+					    destruction();
 				    }
-				    
+					    
+
 				break;
 				
 
@@ -116,15 +116,44 @@ public class GrabConsumable : MonoBehaviour
     [PunRPC]
     private void RPC_Destruction()
     {
+	    Debug.Log("un joueur a été détruit");
+	    
+	    int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
 
-	    PhotonNetwork.Destroy(gameObject);
+	    PlayerManagement.Instance.listeInfoJoueurs.Remove(PlayerManagement.Instance.listeInfoJoueurs[index]);
+
+	    
+	    PlayerNetwork.instance.setnbJoueur(PlayerNetwork.instance.getnbJoueur() - 1);
 	    if (PhotonNetwork.player == photonView.owner)
 	    {
+		    PhotonNetwork.Destroy(gameObject);
 		    Debug.Log("taille de la liste de panel :" + GameObject.FindGameObjectsWithTag("TopPanel").Length);
 		    quitMenu = GameObject.FindGameObjectsWithTag("TopPanel")[0].GetComponent<EndGameUI>().topPanel;
 		    GameObject.FindGameObjectsWithTag("TopPanel")[0].GetComponent<EndGameUI>().text.text = "Vous avez été tué";
 		    Debug.Log("on rentre dans le if d'affichage de menu");
 		    quitMenu.SetActive(true);
+	    }
+
+	    else
+	    {
+		    
+		    
+		    if (PlayerManagement.Instance.listeInfoJoueurs.Count == 1)
+		    {
+			    
+			    Debug.Log("On detecte bien qu'il ne reste qu'un joueur et que je n'ai pas été rekt");
+			    
+
+				    if (PlayerManagement.Instance.listeInfoJoueurs[0].photonPlayerJoueur == PhotonNetwork.player)
+				    {
+					    Debug.Log("taille de la liste de panel :" + GameObject.FindGameObjectsWithTag("TopPanel").Length);
+					    quitMenu = GameObject.FindGameObjectsWithTag("TopPanel")[0].GetComponent<EndGameUI>().topPanel;
+					    GameObject.FindGameObjectsWithTag("TopPanel")[0].GetComponent<EndGameUI>().text.text = "Winner !";
+					    Debug.Log("on rentre dans le if d'affichage de menu");
+					    quitMenu.SetActive(true);
+				    }
+			    
+		    }
 	    }
 
     }

@@ -63,6 +63,12 @@ public class StatRefresher : MonoBehaviour
     {
 
         int count = 0;
+        
+        int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == unPhotonPlayer);
+
+        PlayerManagement.Instance.listeInfoJoueurs[index].health = health;
+        PlayerManagement.Instance.listeInfoJoueurs[index].energy = energy;
+        
 
         foreach (var playerGameObject in GameObject.FindGameObjectsWithTag("Joueur"))
         {
@@ -83,8 +89,9 @@ public class StatRefresher : MonoBehaviour
                 {
                     
                     playerGameObject.GetComponent<Inventory>().tabSlots[i] = tabSlots[i];
+                    PlayerManagement.Instance.listeInfoJoueurs[index].tabSlots[i] = tabSlots[i];
                     //playerGameObject.GetComponent<Inventory>().UpdateTXT(i, tabSlots[i].ToString());
-                    
+
                 }
                 
                 Debug.Log("Entrée dans la boucle for du tableau de la rpc");

@@ -18,7 +18,7 @@ public class PlayerNetwork : MonoBehaviour
     //on peut acceder au name de n'importe où mais on ne peut le changer que dans ce script (le setter est private)
     public string name { get; private set; }
     private PhotonView photonView;
-    private int nbJoueurs;
+    private int nbJoueurs = 0;
     public int allConnected = 0;
 
     private PlayerMovement currentPlayer;
@@ -81,7 +81,7 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     private void RPC_LoadGameOthers()
     {
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel(2);
     }
 
     [PunRPC]
@@ -99,6 +99,8 @@ public class PlayerNetwork : MonoBehaviour
         
         print("le joueur a été ajouté : " + unPhotonPlayer.ID);
         nbJoueurs = nbJoueurs + 1;
+        
+        Debug.Log("j'affiche le nb joueur : " + nbJoueurs);
 
         if (nbJoueurs == PhotonNetwork.playerList.Length)
         {
@@ -144,12 +146,11 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     private void RPC_AskAddPlayerToLIst()
     {
-
-        foreach (PlayerStats player in PlayerManagement.Instance.listeInfoJoueurs)
-        {
-            photonView.RPC("RPC_AddPlayerToLIst", PhotonTargets.Others, player.photonPlayerJoueur);
-        }
-    
+ 
+            foreach (PlayerStats player in PlayerManagement.Instance.listeInfoJoueurs)
+            {
+                photonView.RPC("RPC_AddPlayerToLIst", PhotonTargets.Others, player.photonPlayerJoueur);
+            }
 
     }
 

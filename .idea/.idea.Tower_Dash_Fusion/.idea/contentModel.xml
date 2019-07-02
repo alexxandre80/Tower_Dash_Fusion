@@ -303,6 +303,7 @@
             </e>
             <e p="MainCanvasManager.cs" t="Include" />
             <e p="Networks" t="Include">
+              <e p="LeaveCurrentMatch.cs" t="Include" />
               <e p="LobbyNetwork.cs" t="Include" />
               <e p="PlayerNetwork.cs" t="Include" />
             </e>
@@ -335,6 +336,7 @@
           <e p="MovingTransformOfNonKinematicObjectScript.cs" t="Include" />
           <e p="OfflineIntentReceiver.cs" t="Include" />
           <e p="PaperBox.cs" t="Include" />
+          <e p="PlayButton.cs" t="Include" />
           <e p="PlayerJumps.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PUN" t="Include">

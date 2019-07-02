@@ -18,15 +18,9 @@ public class EndGameUI : MonoBehaviour
     
     public void onClickLeaveRoom()
     {
+        PlayerNetwork.instance.setnbJoueur(0);
         PhotonNetwork.LeaveRoom();
-        foreach (var ddol in GameObject.FindGameObjectsWithTag("ddol"))
-        {
-            Destroy(ddol);
-        }
-        SceneManager.LoadScene("Lobby", LoadSceneMode.Single);
-
-        
-
+        PhotonNetwork.LoadLevel(1);
 
     }
 }

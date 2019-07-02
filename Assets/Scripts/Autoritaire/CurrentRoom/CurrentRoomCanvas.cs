@@ -10,7 +10,7 @@ public class CurrentRoomCanvas : MonoBehaviour
         {
             return;
         }
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel(2);
     }
 
     public void onClickStartDelayed()
@@ -23,7 +23,7 @@ public class CurrentRoomCanvas : MonoBehaviour
         
         PhotonNetwork.room.IsOpen = false;
         PhotonNetwork.room.IsVisible = false;
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel(2);
         
     }
     

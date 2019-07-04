@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3466044233628538112}
   - component: {fileID: 3466044233634002944}
   - component: {fileID: 957373524393382443}
+  - component: {fileID: 6253143366656926861}
   m_Layer: 0
   m_Name: orangePotionItem
-  m_TagString: Untagged
+  m_TagString: orangeP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3466044233626602432}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -60.15038, y: 62.280937, z: 77.79473}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -60.15038, y: 63.251, z: 77.79473}
+  m_LocalScale: {x: 0.20427798, y: 0.22067803, z: 0.16658957}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,3 +114,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemTransform: {fileID: 3466044233626769376}
+--- !u!65 &6253143366656926861
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466044233626602432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.000001, z: 5.305484}
+  m_Center: {x: 0, y: -0.0000004768373, z: 1.1652868}

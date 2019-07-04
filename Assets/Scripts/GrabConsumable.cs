@@ -45,14 +45,13 @@ public class GrabConsumable : MonoBehaviour
 			    
 			    case "bullet": //bullets
 
+					int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
+					PlayerManagement.Instance.listeInfoJoueurs[index].health -= 10;
 
-					    int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
-					    PlayerManagement.Instance.listeInfoJoueurs[index].health -= 10;
 				    if (PlayerManagement.Instance.listeInfoJoueurs[index].health <= 0)
 				    {
 					    destruction();
 				    }
-					    
 
 				break;
 				
@@ -69,34 +68,34 @@ public class GrabConsumable : MonoBehaviour
 	            break;
 
 
-	            case "greenpotion": //greenPotion
+	            case "greenP": //greenPotion
 
 	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 2);
 				    
-				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "greenpotion");
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "greenP");
 	            break;
 
-	            case "orangepotion": //orangePotion
+	            case "orangeP": //orangePotion
 
 	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 3);
 				    
-				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "orangepotion");
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "orangeP");
 
 	            break;
 
-	            case "redpotion": //redPotion
+	            case "redP": //redPotion
 
 	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 4);
 				    
-				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "redpotion");
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "redP");
 
 	            break;
 
-	            case "supergun": //superGun
+	            case "superGun": //superGun
 
 	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 5);
 				    
-				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "supergun");
+				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "superGun");
 
 	            break;
 
@@ -190,26 +189,111 @@ public class GrabConsumable : MonoBehaviour
 	    int i = 0;
 	    int flag = 0;
 
-	    while (i <  GameObject.FindGameObjectsWithTag(tag).Length && flag!=1)
-	    {
-		    
-		    if (GameObject.FindGameObjectsWithTag(tag)[i].GetComponent<ItemExposerScript>().GetId() == id)
-		    {
-			    ItemGeneratorScript.instance.destroyApple(GameObject.FindGameObjectsWithTag(tag)[i]
-				    .GetComponent<ItemExposerScript>());
-			    
-			    Debug.Log("on trouve la pomme à détruire");
+	    switch(tag){
+	    	case "apple":
+			    while (i <  GameObject.FindGameObjectsWithTag(tag).Length && flag!=1)
+			    {
+				    
+				    if (GameObject.FindGameObjectsWithTag(tag)[i].GetComponent<ItemExposerScript>().GetId() == id){
 
-			    flag = 1;
-			    
+					    ItemGeneratorScript.instance.destroyApple(GameObject.FindGameObjectsWithTag(tag)[i]
+						    .GetComponent<ItemExposerScript>());
 
-		    }
+					    //Debug.Log("on trouve la pomme à détruire");
+					    flag = 1;
+					    
+				    }
 
-		    i = i + 1;
-		    
-	    }
+				    i = i + 1;
+			    }
+			break;
 
+			case "banana":
+			    while (i <  GameObject.FindGameObjectsWithTag(tag).Length && flag!=1)
+			    {
+				    
+				    if (GameObject.FindGameObjectsWithTag(tag)[i].GetComponent<ItemExposerScript>().GetId() == id){
 
+					    ItemGeneratorScript.instance.destroyBanana(GameObject.FindGameObjectsWithTag(tag)[i]
+						    .GetComponent<ItemExposerScript>());
+
+					    flag = 1;
+					    
+				    }
+
+				    i = i + 1;
+			    }
+			break;
+
+			case "greenP":
+			    while (i <  GameObject.FindGameObjectsWithTag(tag).Length && flag!=1)
+			    {
+				    
+				    if (GameObject.FindGameObjectsWithTag(tag)[i].GetComponent<ItemExposerScript>().GetId() == id){
+
+					    ItemGeneratorScript.instance.destroyGreenP(GameObject.FindGameObjectsWithTag(tag)[i]
+						    .GetComponent<ItemExposerScript>());
+
+					    flag = 1;
+					    
+				    }
+
+				    i = i + 1;
+			    }
+			break;
+
+			case "orangeP":
+			    while (i <  GameObject.FindGameObjectsWithTag(tag).Length && flag!=1)
+			    {
+				    
+				    if (GameObject.FindGameObjectsWithTag(tag)[i].GetComponent<ItemExposerScript>().GetId() == id){
+
+					    ItemGeneratorScript.instance.destroyOrangeP(GameObject.FindGameObjectsWithTag(tag)[i]
+						    .GetComponent<ItemExposerScript>());
+
+					    flag = 1;
+					    
+				    }
+
+				    i = i + 1;
+			    }
+			break;
+
+			case "redP":
+			    while (i <  GameObject.FindGameObjectsWithTag(tag).Length && flag!=1)
+			    {
+				    
+				    if (GameObject.FindGameObjectsWithTag(tag)[i].GetComponent<ItemExposerScript>().GetId() == id){
+
+					    ItemGeneratorScript.instance.destroyRedP(GameObject.FindGameObjectsWithTag(tag)[i]
+						    .GetComponent<ItemExposerScript>());
+
+					    flag = 1;
+					    
+				    }
+
+				    i = i + 1;
+			    }
+			break;
+
+			case "superGun":
+			    while (i <  GameObject.FindGameObjectsWithTag(tag).Length && flag!=1)
+			    {
+				    
+				    if (GameObject.FindGameObjectsWithTag(tag)[i].GetComponent<ItemExposerScript>().GetId() == id){
+
+					    ItemGeneratorScript.instance.destroySupergun(GameObject.FindGameObjectsWithTag(tag)[i]
+						    .GetComponent<ItemExposerScript>());
+
+					    flag = 1;
+					    
+				    }
+
+				    i = i + 1;
+			    }
+			break;
+
+		}
     }
 }
 

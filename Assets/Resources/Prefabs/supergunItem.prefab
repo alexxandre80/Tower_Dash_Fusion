@@ -88,9 +88,10 @@ GameObject:
   - component: {fileID: 1900390660636963846}
   - component: {fileID: 1900390660627405812}
   - component: {fileID: 550337056453100322}
+  - component: {fileID: 8542076159866495717}
   m_Layer: 0
   m_Name: supergunItem
-  m_TagString: Untagged
+  m_TagString: superGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,8 +104,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900390660636928038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -58.525764, y: 64.777016, z: 82.043976}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -59.865, y: 65.088, z: 81.43}
+  m_LocalScale: {x: 0.27601606, y: 0.34536207, z: 0.42947048}
   m_Children:
   - {fileID: 1900390660636963860}
   - {fileID: 1900390660636963862}
@@ -150,6 +151,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemTransform: {fileID: 1900390660636963846}
+--- !u!65 &8542076159866495717
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900390660636928038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.5, z: 4.5}
+  m_Center: {x: -1.9, y: 0.5, z: -1.2}
 --- !u!1 &1900390660636928048
 GameObject:
   m_ObjectHideFlags: 0

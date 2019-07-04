@@ -20,6 +20,14 @@ TagManager:
   - banana
   - ddol
   - TopPanel
+  - greenPotion
+  - orangePotion
+  - redPotion
+  - supergun
+  - greenP
+  - orangeP
+  - redP
+  - superGun
   layers:
   - Default
   - TransparentFX

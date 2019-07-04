@@ -28,6 +28,7 @@ TagManager:
   - orangeP
   - redP
   - superGun
+  - Joystick
   layers:
   - Default
   - TransparentFX

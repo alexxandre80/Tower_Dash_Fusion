@@ -20,20 +20,23 @@ public class MoveCubeScript : MonoBehaviour
 
     private Vector3 targetPosition;
     private Quaternion TargetRotation;
-    public float health;
-    public float maxHealth;
-    public float notoriety;
-    public float damageStone;
-    public float damagePaper;
-    public float damageScissor;
-    public int inFight;
-    public float movementSpeed;
-    
+   //public float health;
+   //public float maxHealth;
+   //public float notoriety;
+   //public float damageStone;
+   //public float damagePaper;
+   //public float damageScissor;
+   //public int inFight;
+   //public float movementSpeed;
+   public float speed;
+   public VariableJoystick variableJoystick;
+   public Rigidbody rb;
     
     
     void Awake()
     {
         photonview = GetComponent<PhotonView>();
+        variableJoystick = GameObject.FindWithTag("Joystick").GetComponent<VariableJoystick>();
     }
     
         void Update()
@@ -112,6 +115,9 @@ public class MoveCubeScript : MonoBehaviour
         {
             photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
         }
+        
+        Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
+        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
         
         if (Input.GetKeyDown (KeyCode.Space)) {

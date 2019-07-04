@@ -315,6 +315,7 @@
           <e p="CameraController.cs" t="Include" />
           <e p="Cameralibre.cs" t="Include" />
           <e p="CameraMotor.cs" t="Include" />
+          <e p="Child.cs" t="Include" />
           <e p="Deplacement.cs" t="Include" />
           <e p="DesiredAspectRatio.cs" t="Include" />
           <e p="EndGameUI.cs" t="Include" />

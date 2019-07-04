@@ -11,34 +11,50 @@ public class Child : MonoBehaviour
 
     [SerializeField]
     Transform joueurTransform;
+
+    [SerializeField]
+    private MoveCubeScript move;
+    
+    
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider surface)
     {
         
 
-        if(collision.gameObject.tag == "plateforme")
+        if(surface.gameObject.tag == "Plateforme")
         {
-            joueurTransform.parent = collision.transform;
+            joueurTransform.parent = surface.transform;
+            
         }
+        move.setAllowToJump(true);
 
 
     }
 
-    void OnCollisionExit(Collision collision)
+    void OnTriggerExit(Collider surface)
     {
         
-        if (collision.gameObject.tag == "ColliderHautBas")
+        if (surface.gameObject.tag == "Plateforme")
         {
             joueurTransform.parent = null;
         }
         
+        move.setAllowToJump(false);
+        
+    }
+    
+    void OnTriggerStay(Collider surface)
+    {
+
+        move.setAllowToJump(true);
+
     }
 
 

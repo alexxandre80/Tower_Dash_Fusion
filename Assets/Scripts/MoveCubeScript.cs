@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
@@ -16,6 +17,12 @@ public class MoveCubeScript : MonoBehaviour
     
     
     private PhotonView photonview;
+    
+    [SerializeField]
+    private Boolean allowToJump;
+
+    [SerializeField] 
+    private Rigidbody playerRigidBody;
 
 
     private Vector3 targetPosition;
@@ -112,6 +119,11 @@ public class MoveCubeScript : MonoBehaviour
         {
             photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
         }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            photonview.RPC("RPC_AskToJump", PhotonTargets.MasterClient, photonview.owner);
+        }
 
     }
 
@@ -145,4 +157,32 @@ public class MoveCubeScript : MonoBehaviour
         
         
     }
+
+    public void setAllowToJump(Boolean allow)
+    {
+        allowToJump = allow;
+    }
+    
+    [PunRPC]
+    private void RPC_AskToJump(PhotonPlayer unPhotonPlayer)
+    {
+        if (allowToJump)
+        {
+            photonview.RPC("RPC_jump", PhotonTargets.All, unPhotonPlayer);
+        }
+  
+    }
+    
+    
+    [PunRPC]
+    private void RPC_jump(PhotonPlayer unPhotonPlayer)
+    {
+        if (unPhotonPlayer == photonview.owner)
+        {
+            playerRigidBody.AddForce(Vector3.up * 500.0f);
+                
+        }
+
+    }
+
 }

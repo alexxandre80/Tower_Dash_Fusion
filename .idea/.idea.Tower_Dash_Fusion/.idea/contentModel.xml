@@ -326,6 +326,7 @@
           <e p="GrabConsumable.cs" t="Include" />
           <e p="Health.cs" t="Include" />
           <e p="HealthBarController.cs" t="Include" />
+          <e p="horizontal.cs" t="Include" />
           <e p="Inventory.cs" t="Include" />
           <e p="ItemExposerScript.cs" t="Include" />
           <e p="ItemGeneratorScript.cs" t="Include" />
@@ -355,6 +356,8 @@
           <e p="SimpleMouseLook.cs" t="Include" />
           <e p="StatRefresher.cs" t="Include" />
           <e p="Timer.cs" t="Include" />
+          <e p="trampoline.cs" t="Include" />
+          <e p="Verticale.cs" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">
           <e p="CrossPlatformInput" t="Include">

@@ -1952,18 +1952,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 47839759831081519}
-  moveSpeed: 5
+  moveSpeed: 10
   bulletPrefab: {fileID: 3071843854434221133, guid: 9ba39169e9f32694e96b1646bcb55774,
     type: 3}
   bulletSpawn: {fileID: 6911317154312698991}
-  health: 0
-  maxHealth: 0
-  notoriety: 0
-  damageStone: 0
-  damagePaper: 0
-  damageScissor: 0
-  inFight: 0
-  movementSpeed: 0
+  speed: 20
+  variableJoystick: {fileID: 0}
+  rb: {fileID: 4992671663983968118}
 --- !u!114 &3037991951244208865
 MonoBehaviour:
   m_ObjectHideFlags: 0

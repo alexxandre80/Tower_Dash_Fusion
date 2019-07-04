@@ -2069,6 +2069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory_script: {fileID: 0}
+  quitMenu: {fileID: 0}
 --- !u!1 &7616200189984953356
 GameObject:
   m_ObjectHideFlags: 0

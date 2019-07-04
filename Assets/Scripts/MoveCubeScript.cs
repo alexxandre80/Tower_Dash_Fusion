@@ -113,6 +113,13 @@ public class MoveCubeScript : MonoBehaviour
             photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
         }
 
+        
+        if (Input.GetKeyDown (KeyCode.Space)) {
+            if (transform.position.y <= 1.05f) {
+                GetComponent<Rigidbody>().AddForce (Vector3.up * 700);
+            }
+        }
+
     }
 
 

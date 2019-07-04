@@ -45,6 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   applePrefab: {fileID: 868857265, guid: 6f1e81a4df1dd7b478fb2ece7be8b701, type: 3}
+  bananaPrefab: {fileID: 8420293396489745680, guid: b8b56e2e462c868449b89d1d2da9bbaa,
+    type: 3}
+  greenPotionPrefab: {fileID: 2723257973650203727, guid: 403af354916fa254dbb7aa6d71c2f48a,
+    type: 3}
+  orangePotionPrefab: {fileID: 3466044233626602432, guid: facb9d8ad604f9844a3e2f51d1597b6e,
+    type: 3}
+  redPotionPrefab: {fileID: 5813886767856735644, guid: 61a8797e30250454fbd80d2cb4e23a7c,
+    type: 3}
+  superGunPrefab: {fileID: 1900390660636928038, guid: f7295e65d62e55b47bded4bf46f48ed5,
+    type: 3}
   photonView: {fileID: 2057375675166645296}
 --- !u!114 &2057375675166645296
 MonoBehaviour:

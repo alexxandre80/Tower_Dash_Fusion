@@ -69,4 +69,8 @@ MonoBehaviour:
   - RPC_Destruction
   - GenererBananaRPC
   - RPC_AskAddPlayerToLIst
+  - GenererGreenPRPC
+  - GenererOrangePRPC
+  - GenererRedPRPC
+  - GenererSuperGunRPC
   DisableAutoOpenWizard: 1

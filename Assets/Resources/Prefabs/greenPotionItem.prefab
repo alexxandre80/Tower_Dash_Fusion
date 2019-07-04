@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2723257973647948431}
   - component: {fileID: 2723257973659588495}
   - component: {fileID: 1142255635242723609}
+  - component: {fileID: 1280437043497617632}
   m_Layer: 0
   m_Name: greenPotionItem
-  m_TagString: Untagged
+  m_TagString: greenP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2723257973650203727}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -61.131104, y: 61.818607, z: 81.19078}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -61.131, y: 62.236, z: 81.195}
+  m_LocalScale: {x: 0.17878385, y: 0.1675776, z: 0.1817821}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,3 +114,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemTransform: {fileID: 2723257973650241647}
+--- !u!65 &1280437043497617632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2723257973650203727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.069156, y: 2.097125, z: 3.565316}
+  m_Center: {x: 0.0013399719, y: -0.0050255065, z: 0.5100776}

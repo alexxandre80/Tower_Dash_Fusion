@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5813886767854734172}
   - component: {fileID: 5813886767863998044}
   - component: {fileID: 7509125136559906497}
+  - component: {fileID: 3992742299009291871}
   m_Layer: 0
   m_Name: redPotionItem
-  m_TagString: Untagged
+  m_TagString: redP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5813886767856735644}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -58.767525, y: 64.01089, z: 76.47531}
-  m_LocalScale: {x: 1.2307804, y: 1.2307804, z: 1.2307804}
+  m_LocalPosition: {x: -58.767525, y: 64.529, z: 76.47531}
+  m_LocalScale: {x: 0.2807505, y: 0.27077264, z: 0.23590367}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,3 +114,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemTransform: {fileID: 5813886767857027516}
+--- !u!65 &3992742299009291871
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813886767856735644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.902116, y: 2.0000005, z: 3.0425446}
+  m_Center: {x: 0, y: 0, z: 0.52127206}

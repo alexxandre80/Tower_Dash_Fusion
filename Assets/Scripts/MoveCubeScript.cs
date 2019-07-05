@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
@@ -16,6 +17,15 @@ public class MoveCubeScript : MonoBehaviour
     
     
     private PhotonView photonview;
+    
+    [SerializeField]
+    private Boolean allowToJump;
+
+    [SerializeField] 
+    private Rigidbody playerRigidBody;
+    
+    
+    
 
 
     private Vector3 targetPosition;
@@ -30,13 +40,13 @@ public class MoveCubeScript : MonoBehaviour
    //public float movementSpeed;
    public float speed;
    public VariableJoystick variableJoystick;
-   public Rigidbody rb;
     
     
     void Awake()
     {
         photonview = GetComponent<PhotonView>();
         variableJoystick = GameObject.FindWithTag("Joystick").GetComponent<VariableJoystick>();
+
     }
     
         void Update()
@@ -87,6 +97,9 @@ public class MoveCubeScript : MonoBehaviour
 
     private void checkInput()
     {
+		Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
+		playerRigidBody.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+		
         if (Input.GetKey(KeyCode.S))
         {
             targetTransform.position +=
@@ -110,20 +123,20 @@ public class MoveCubeScript : MonoBehaviour
             targetTransform.position +=
                 Vector3.right * Time.deltaTime * moveSpeed;
         }
+		
+		
         
         if (Input.GetKeyDown(KeyCode.K))
         {
             photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
         }
-        
-        Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
-        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
-        /*if (Input.GetKeyDown (KeyCode.Space)) {
-            if (transform.position.y <= 1.05f) {
-                GetComponent<Rigidbody>().AddForce (Vector3.up * 700);
-            }
-        }*/
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            photonview.RPC("RPC_AskToJump", PhotonTargets.MasterClient, photonview.owner);
+			
+		}
 
 
     }
@@ -158,4 +171,32 @@ public class MoveCubeScript : MonoBehaviour
         
         
     }
+
+    public void setAllowToJump(Boolean allow)
+    {
+        allowToJump = allow;
+    }
+    
+    [PunRPC]
+    private void RPC_AskToJump(PhotonPlayer unPhotonPlayer)
+    {
+        if (allowToJump)
+        {
+            photonview.RPC("RPC_jump", PhotonTargets.All, unPhotonPlayer);
+        }
+  
+    }
+    
+    
+    [PunRPC]
+    private void RPC_jump(PhotonPlayer unPhotonPlayer)
+    {
+        if (unPhotonPlayer == photonview.owner)
+        {
+            playerRigidBody.AddForce(Vector3.up * 500.0f);
+                
+        }
+
+    }
+
 }

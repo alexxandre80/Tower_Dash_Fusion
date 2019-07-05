@@ -73,4 +73,10 @@ MonoBehaviour:
   - GenererOrangePRPC
   - GenererRedPRPC
   - GenererSuperGunRPC
+  - RPC_up
+  - RPC_down
+  - RPC_left
+  - RPC_right
+  - RPC_AskToJump
+  - RPC_jump
   DisableAutoOpenWizard: 1

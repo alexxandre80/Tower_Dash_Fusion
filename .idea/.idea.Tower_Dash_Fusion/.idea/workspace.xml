@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc07b6dc-ef18-4be1-b28a-b43984cf8eba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Tower_Dash_Fusion/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Tower_Dash_Fusion/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Light_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Light_Mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Rock_1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Rock_1.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon Unity Networking/Demos/DemoChangeOwner/MaterialPerOwner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon Unity Networking/Demos/DemoChangeOwner/MaterialPerOwner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Players.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Players.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Trampoline.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Trampoline.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveCubeScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoveCubeScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Trampoline.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Trampoline.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-    </list>
+    <list default="true" id="cc07b6dc-ef18-4be1-b28a-b43984cf8eba" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +69,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Photon Unity Networking/Demos/DemoChangeOwner/MaterialPerOwner.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+            <state relative-caret-position="405">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <marker date="1562321853715" expanded="true" signature="6:44" ph="..." />
                 <marker date="1562321853715" expanded="true" signature="142:510" ph="{...}" />
@@ -321,7 +311,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-23" />
     <option name="y" value="-25" />
     <option name="width" value="1620" />
@@ -427,12 +417,12 @@
       <workItem from="1562170156965" duration="1906000" />
       <workItem from="1562260203754" duration="5945000" />
       <workItem from="1562273096131" duration="7671000" />
-      <workItem from="1562316327297" duration="6823000" />
+      <workItem from="1562316327297" duration="7794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117859000" />
+    <option name="totallyTimeSpent" value="118830000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -444,7 +434,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15231362" />
@@ -2460,8 +2450,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Photon Unity Networking/Demos/DemoChangeOwner/MaterialPerOwner.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+        <state relative-caret-position="405">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
           <folding>
             <marker date="1562321853715" expanded="true" signature="6:44" ph="..." />
             <marker date="1562321853715" expanded="true" signature="142:510" ph="{...}" />

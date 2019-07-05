@@ -24,7 +24,9 @@ public class Child : MonoBehaviour
         
     }
 
+
     void OnTriggerEnter(Collider surface)
+
     {
         
 
@@ -37,8 +39,24 @@ public class Child : MonoBehaviour
 
 
     }
+    /*
+    void OnTriggerStay(Collision collision)
+    {
+        
+        if (Input.GetKeyDown (KeyCode.Space)) {
+
+            if (joueurTransform.position.y <= 1.05f) {
+
+                //GetComponent<Rigidbody>().AddForce (Vector3.up * 700);
+                joueurTransform.parent.gameObject.GetComponent<Rigidbody>().AddForce (Vector3.up * 700);
+            }
+        }
+
+    }*/
+
 
     void OnTriggerExit(Collider surface)
+
     {
         
         if (surface.gameObject.tag == "Plateforme")

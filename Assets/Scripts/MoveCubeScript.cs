@@ -131,11 +131,13 @@ public class MoveCubeScript : MonoBehaviour
             photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
         }
 
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             photonview.RPC("RPC_AskToJump", PhotonTargets.MasterClient, photonview.owner);
 			
 		}
+
 
     }
 

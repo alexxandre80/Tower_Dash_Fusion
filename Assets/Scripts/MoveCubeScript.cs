@@ -23,6 +23,9 @@ public class MoveCubeScript : MonoBehaviour
 
     [SerializeField] 
     private Rigidbody playerRigidBody;
+    
+    
+    
 
 
     private Vector3 targetPosition;
@@ -41,6 +44,8 @@ public class MoveCubeScript : MonoBehaviour
     void Awake()
     {
         photonview = GetComponent<PhotonView>();
+
+
     }
     
         void Update()

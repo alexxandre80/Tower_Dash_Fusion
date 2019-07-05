@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6046200815406146328}
   - component: {fileID: 6046200815406146329}
   - component: {fileID: 7158795444792211094}
+  - component: {fileID: 5926303532711871022}
   m_Layer: 0
-  m_Name: Cube (18)
+  m_Name: Trampoline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6046200815406146342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.3, y: 0.8, z: -17.58}
+  m_LocalPosition: {x: -10.3, y: 0.96, z: -17.58}
   m_LocalScale: {x: 3, y: 0.2, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a9946b5bb2b85f448a034b3a7cc2dce4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,3 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082eca68018296a40b60dfc40c745ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rebound: 1500
+--- !u!65 &5926303532711871022
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6046200815406146342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.8, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

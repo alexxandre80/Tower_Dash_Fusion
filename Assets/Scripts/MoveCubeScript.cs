@@ -119,12 +119,12 @@ public class MoveCubeScript : MonoBehaviour
         Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
         rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
-        
-        if (Input.GetKeyDown (KeyCode.Space)) {
+        /*if (Input.GetKeyDown (KeyCode.Space)) {
             if (transform.position.y <= 1.05f) {
                 GetComponent<Rigidbody>().AddForce (Vector3.up * 700);
             }
-        }
+        }*/
+
 
     }
 

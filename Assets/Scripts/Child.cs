@@ -19,7 +19,7 @@ public class Child : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collision collision)
     {
         
 
@@ -30,8 +30,23 @@ public class Child : MonoBehaviour
 
 
     }
+    /*
+    void OnTriggerStay(Collision collision)
+    {
+        
+        if (Input.GetKeyDown (KeyCode.Space)) {
 
-    void OnCollisionExit(Collision collision)
+            if (joueurTransform.position.y <= 1.05f) {
+
+                //GetComponent<Rigidbody>().AddForce (Vector3.up * 700);
+                joueurTransform.parent.gameObject.GetComponent<Rigidbody>().AddForce (Vector3.up * 700);
+            }
+        }
+
+    }*/
+
+
+    void OnTriggerExit(Collision collision)
     {
         
         if (collision.gameObject.tag == "ColliderHautBas")

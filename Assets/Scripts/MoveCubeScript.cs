@@ -30,21 +30,22 @@ public class MoveCubeScript : MonoBehaviour
 
     private Vector3 targetPosition;
     private Quaternion TargetRotation;
-    public float health;
-    public float maxHealth;
-    public float notoriety;
-    public float damageStone;
-    public float damagePaper;
-    public float damageScissor;
-    public int inFight;
-    public float movementSpeed;
-    
+   //public float health;
+   //public float maxHealth;
+   //public float notoriety;
+   //public float damageStone;
+   //public float damagePaper;
+   //public float damageScissor;
+   //public int inFight;
+   //public float movementSpeed;
+   public float speed;
+   public VariableJoystick variableJoystick;
     
     
     void Awake()
     {
         photonview = GetComponent<PhotonView>();
-
+        variableJoystick = GameObject.FindWithTag("Joystick").GetComponent<VariableJoystick>();
 
     }
     
@@ -96,6 +97,9 @@ public class MoveCubeScript : MonoBehaviour
 
     private void checkInput()
     {
+		Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
+		playerRigidBody.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+		
         if (Input.GetKey(KeyCode.S))
         {
             targetTransform.position +=
@@ -119,16 +123,19 @@ public class MoveCubeScript : MonoBehaviour
             targetTransform.position +=
                 Vector3.right * Time.deltaTime * moveSpeed;
         }
+		
+		
         
         if (Input.GetKeyDown(KeyCode.K))
         {
             photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             photonview.RPC("RPC_AskToJump", PhotonTargets.MasterClient, photonview.owner);
-        }
+			
+		}
 
     }
 

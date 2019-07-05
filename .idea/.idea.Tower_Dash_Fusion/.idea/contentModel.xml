@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Nelson\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Nelson\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Tower_Dash_Fusion.1991240956.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Nelson\Documents\Unity\TowerDash\Tower_Dash_Fusion" t="IncludeRecursive">
+    <e p="C:\Users\Alexandre\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Alexandre\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Tower_Dash_Fusion.1173420043.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Alexandre\Desktop\Tower_Dash_Fusion" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -310,14 +310,22 @@
             <e p="PlayerManagement.cs" t="Include" />
           </e>
           <e p="BallSpawnerScript.cs" t="Include" />
+          <e p="Base" t="Include">
+            <e p="Joystick.cs" t="Include" />
+          </e>
           <e p="Billboard.cs" t="Include" />
           <e p="Bullet.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
           <e p="Cameralibre.cs" t="Include" />
           <e p="CameraMotor.cs" t="Include" />
           <e p="Child.cs" t="Include" />
-          <e p="Deplacement.cs" t="Include" />
           <e p="DesiredAspectRatio.cs" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="DynamicJoystickEditor.cs" t="Include" />
+            <e p="FloatingJoystickEditor.cs" t="Include" />
+            <e p="JoystickEditor.cs" t="Include" />
+            <e p="VariableJoystickEditor.cs" t="Include" />
+          </e>
           <e p="EndGameUI.cs" t="Include" />
           <e p="EnemySpawner.cs" t="Include" />
           <e p="Energy.cs" t="Include" />
@@ -330,7 +338,12 @@
           <e p="Inventory.cs" t="Include" />
           <e p="ItemExposerScript.cs" t="Include" />
           <e p="ItemGeneratorScript.cs" t="Include" />
-          <e p="Joystick.cs" t="Include" />
+          <e p="Joysticks" t="Include">
+            <e p="DynamicJoystick.cs" t="Include" />
+            <e p="FixedJoystick.cs" t="Include" />
+            <e p="FloatingJoystick.cs" t="Include" />
+            <e p="VariableJoystick.cs" t="Include" />
+          </e>
           <e p="LevelManager.cs" t="Include" />
           <e p="Main.cs" t="Include" />
           <e p="MiniMap.cs" t="Include" />

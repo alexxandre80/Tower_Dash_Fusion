@@ -30,6 +30,7 @@ TagManager:
   - superGun
   - Plateforme Verticale
   - Plateforme
+  - Joystick
   layers:
   - Default
   - TransparentFX

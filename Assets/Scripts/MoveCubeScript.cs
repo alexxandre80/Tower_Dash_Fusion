@@ -193,7 +193,7 @@ public class MoveCubeScript : MonoBehaviour
     {
         if (unPhotonPlayer == photonview.owner)
         {
-            playerRigidBody.AddForce(Vector3.up * 500.0f);
+            playerRigidBody.AddForce(Vector3.up * 700.0f);
                 
         }
 

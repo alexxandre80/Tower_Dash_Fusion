@@ -40,6 +40,14 @@ public class MoveCubeScript : MonoBehaviour
    //public float movementSpeed;
    public float speed;
    public VariableJoystick variableJoystick;
+
+    /*public float lookSpeed = 10;
+   private Vector3 curLoc;
+    private Vector3 prevLoc;
+    private Vector3 previousLocation;*/
+
+    //public float turnSpeed = 50f;
+
     
     
     void Awake()
@@ -63,6 +71,9 @@ public class MoveCubeScript : MonoBehaviour
         {
             smoothSyncMovement();
         }
+
+        //InputListen();
+        //transform.rotation = Quaternion.Lerp (transform.rotation,  Quaternion.LookRotation(transform.position - prevLoc), Time.fixedDeltaTime * lookSpeed);
 
     }
     
@@ -95,38 +106,19 @@ public class MoveCubeScript : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, TargetRotation, 500 * Time.deltaTime);
     }
 
-    private void checkInput()
+ 
+		private void checkInput()
     {
-		Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
-		playerRigidBody.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
-		
-        if (Input.GetKey(KeyCode.S))
-        {
-            targetTransform.position +=
-                Vector3.back * Time.deltaTime * moveSpeed;
-        }
+        //moveSpeed = 10f;
+        float rotateSpeed = 300f;
 
-        if (Input.GetKey(KeyCode.Z))
-        {
-            targetTransform.position +=
-                Vector3.forward * Time.deltaTime * moveSpeed;
-        }
+        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
 
-        if (Input.GetKey(KeyCode.Q))
-        {
-            targetTransform.position +=
-                Vector3.left * Time.deltaTime * moveSpeed;
-        }
+        transform.position += transform.forward * (vertical * moveSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(0,horizontal* rotateSpeed * Time.deltaTime, 0));
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            targetTransform.position +=
-                Vector3.right * Time.deltaTime * moveSpeed;
-        }
-		
-		
-        
-        if (Input.GetKeyDown(KeyCode.K))
+             if (Input.GetKeyDown(KeyCode.K))
         {
             photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
         }
@@ -135,11 +127,17 @@ public class MoveCubeScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             photonview.RPC("RPC_AskToJump", PhotonTargets.MasterClient, photonview.owner);
-			
-		}
+            
+        }
 
 
     }
+		
+		
+        
+   
+        //transform.position = curLoc;
+
 
 
     [PunRPC]

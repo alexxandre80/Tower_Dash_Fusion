@@ -1954,13 +1954,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 47839759831081519}
-  moveSpeed: 20
+  moveSpeed: 25
   bulletPrefab: {fileID: 3071843854434221133, guid: 9ba39169e9f32694e96b1646bcb55774,
     type: 3}
   bulletSpawn: {fileID: 6911317154312698991}
   allowToJump: 0
   playerRigidBody: {fileID: 4992671663983968118}
-  speed: 30
+  speed: 35
   variableJoystick: {fileID: 0}
 --- !u!114 &3037991951244208865
 MonoBehaviour:

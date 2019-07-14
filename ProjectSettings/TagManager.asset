@@ -31,6 +31,9 @@ TagManager:
   - Plateforme Verticale
   - Plateforme
   - Joystick
+  - plateforme1
+  - plateforme2
+  - plateforme3
   layers:
   - Default
   - TransparentFX

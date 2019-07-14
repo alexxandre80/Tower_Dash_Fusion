@@ -46,7 +46,7 @@ public class GrabConsumable : MonoBehaviour
 			    case "bullet": //bullets
 
 					int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
-					PlayerManagement.Instance.listeInfoJoueurs[index].health -= 10;
+					PlayerManagement.Instance.listeInfoJoueurs[index].health -= 30;
 
 				    if (PlayerManagement.Instance.listeInfoJoueurs[index].health <= 0)
 				    {

@@ -38,7 +38,9 @@ public class MoveCubeScript : MonoBehaviour
    //public float damageScissor;
    //public int inFight;
    //public float movementSpeed;
-   public float speed;
+   
+   [SerializeField]
+   private float speed;
    public VariableJoystick variableJoystick;
 
     /*public float lookSpeed = 10;
@@ -110,7 +112,7 @@ public class MoveCubeScript : MonoBehaviour
 		private void checkInput()
     {
         //moveSpeed = 10f;
-        float rotateSpeed = 300f;
+        float rotateSpeed = 200;
 
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
@@ -161,7 +163,7 @@ public class MoveCubeScript : MonoBehaviour
                 bulletSpawn.rotation);
         
             //Ajout de velocite a la ball
-            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 18;
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 50;
         
             //Destruction de la balle apres 2 seconde
             Destroy(bullet, 0.5f);

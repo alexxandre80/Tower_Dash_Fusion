@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Nelson\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Nelson\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Tower_Dash_Fusion.1991240956.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Nelson\Documents\Unity\TowerDash\Tower_Dash_Fusion" t="IncludeRecursive">
+    <e p="C:\Users\Alexandre\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Alexandre\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Tower_Dash_Fusion.1142179201.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Alexandre\Desktop\Tower_Dash_Fusion_Final\Tower_Dash_Fusion" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -321,8 +321,6 @@
           <e p="Child.cs" t="Include" />
           <e p="DesiredAspectRatio.cs" t="Include" />
           <e p="Editor" t="Include">
-            <e p="DynamicJoystickEditor.cs" t="Include" />
-            <e p="FloatingJoystickEditor.cs" t="Include" />
             <e p="JoystickEditor.cs" t="Include" />
             <e p="VariableJoystickEditor.cs" t="Include" />
           </e>
@@ -339,9 +337,7 @@
           <e p="ItemExposerScript.cs" t="Include" />
           <e p="ItemGeneratorScript.cs" t="Include" />
           <e p="Joysticks" t="Include">
-            <e p="DynamicJoystick.cs" t="Include" />
             <e p="FixedJoystick.cs" t="Include" />
-            <e p="FloatingJoystick.cs" t="Include" />
             <e p="VariableJoystick.cs" t="Include" />
           </e>
           <e p="KillZone.cs" t="Include" />

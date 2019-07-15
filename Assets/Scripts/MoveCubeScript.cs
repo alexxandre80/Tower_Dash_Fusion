@@ -38,8 +38,8 @@ public class MoveCubeScript : MonoBehaviour
    [SerializeField]
    private float speed;
    public VariableJoystick variableJoystick;
-
-   public float jumpforce = 5f;
+   public Button JumpButton;
+   public Button FireButton;
 
 
     /*public float lookSpeed = 10;
@@ -56,7 +56,8 @@ public class MoveCubeScript : MonoBehaviour
     {
         photonview = GetComponent<PhotonView>();
         variableJoystick = GameObject.FindWithTag("Joystick").GetComponent<VariableJoystick>();
-        //boutonJump = GameObject.FindWithTag("boutonJump").GetComponent<Button>();
+        JumpButton = GameObject.FindWithTag("JumpButton").GetComponent<Button>();
+        FireButton = GameObject.FindWithTag("FireButton").GetComponent<Button>();
 
     }
     
@@ -117,9 +118,15 @@ public class MoveCubeScript : MonoBehaviour
 
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
+        
+        transform.position += transform.forward * (variableJoystick.Vertical * moveSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(0,variableJoystick.Horizontal* rotateSpeed * Time.deltaTime, 0));
 
         transform.position += transform.forward * (vertical * moveSpeed * Time.deltaTime);
         transform.Rotate(new Vector3(0,horizontal* rotateSpeed * Time.deltaTime, 0));
+        
+        JumpButton.onClick.AddListener(() => jump());
+        FireButton.onClick.AddListener(() => fire());
 
              if (Input.GetKeyDown(KeyCode.K))
         {
@@ -144,7 +151,7 @@ public class MoveCubeScript : MonoBehaviour
 
     public void Jump()
     {
-        playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x,jumpforce);
+        photonview.RPC("RPC_AskToJump", PhotonTargets.MasterClient, photonview.owner);
     }
 
     [PunRPC]
@@ -176,6 +183,17 @@ public class MoveCubeScript : MonoBehaviour
         
         
     }
+    
+    void jump()
+    {
+        photonview.RPC("RPC_AskToJump", PhotonTargets.MasterClient, photonview.owner);
+    }   
+    
+    void fire()
+    {
+        photonview.RPC("RPC_AskToFire", PhotonTargets.MasterClient, photonview.owner);
+    }
+
 
     public void setAllowToJump(Boolean allow)
     {

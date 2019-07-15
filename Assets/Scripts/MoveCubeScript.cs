@@ -40,7 +40,7 @@ public class MoveCubeScript : MonoBehaviour
    public VariableJoystick variableJoystick;
    public Button JumpButton;
    public Button FireButton;
-   public int flagbutton = 0;
+   private int flagbutton = 0;
 
 
     /*public float lookSpeed = 10;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Alexandre\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Alexandre\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Tower_Dash_Fusion.1173420043.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Alexandre\Desktop\Tower_Dash_Fusion" t="IncludeRecursive">
+    <e p="C:\Users\Nelson\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Nelson\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Tower_Dash_Fusion.1991240956.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Nelson\Documents\Unity\TowerDash\Tower_Dash_Fusion" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -344,6 +344,8 @@
             <e p="FloatingJoystick.cs" t="Include" />
             <e p="VariableJoystick.cs" t="Include" />
           </e>
+          <e p="KillZone.cs" t="Include" />
+          <e p="LevelDesigner.cs" t="Include" />
           <e p="LevelManager.cs" t="Include" />
           <e p="Main.cs" t="Include" />
           <e p="MiniMap.cs" t="Include" />
@@ -370,6 +372,7 @@
           <e p="StatRefresher.cs" t="Include" />
           <e p="Timer.cs" t="Include" />
           <e p="trampoline.cs" t="Include" />
+          <e p="TransformFunctions.cs" t="Include" />
           <e p="Verticale.cs" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">

@@ -79,4 +79,6 @@ MonoBehaviour:
   - RPC_right
   - RPC_AskToJump
   - RPC_jump
+  - RPC_DestructionPlateforme
+  - RPC_WarningPlateforme
   DisableAutoOpenWizard: 1

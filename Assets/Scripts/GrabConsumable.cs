@@ -45,12 +45,17 @@ public class GrabConsumable : MonoBehaviour
 				    index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
 					PlayerManagement.Instance.listeInfoJoueurs[index].health += 30;
 				    
+				    if (PlayerManagement.Instance.listeInfoJoueurs[index].health > 100)
+				    {
+					    PlayerManagement.Instance.listeInfoJoueurs[index].health = 100;
+				    }
+				    
 				break;
 			    
 			    case "bullet": //bullets
 
 					index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
-					PlayerManagement.Instance.listeInfoJoueurs[index].health -= 10;
+					PlayerManagement.Instance.listeInfoJoueurs[index].health -= 30;
 
 				    if (PlayerManagement.Instance.listeInfoJoueurs[index].health <= 0)
 				    {
@@ -71,7 +76,12 @@ public class GrabConsumable : MonoBehaviour
 	                //Destroy (col.gameObject);
 
 				    index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
-					PlayerManagement.Instance.listeInfoJoueurs[index].health += 5;
+					PlayerManagement.Instance.listeInfoJoueurs[index].health += 10;
+					
+					if (PlayerManagement.Instance.listeInfoJoueurs[index].health > 100)
+					{
+						PlayerManagement.Instance.listeInfoJoueurs[index].health = 100;
+					}
 
 	            break;
 
@@ -104,7 +114,9 @@ public class GrabConsumable : MonoBehaviour
 				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "redP");
 
 				    index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == photonView.owner);
-					PlayerManagement.Instance.listeInfoJoueurs[index].health += 30;
+					PlayerManagement.Instance.listeInfoJoueurs[index].health += 100;
+
+	                
 
 	            break;
 

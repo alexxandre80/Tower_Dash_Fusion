@@ -20,7 +20,7 @@ public class LevelDesigner : MonoBehaviour
             if (Time.timeSinceLevelLoad > 20 && Time.timeSinceLevelLoad < 40)
             {
 
-                photonview.RPC("RPC_WarningPlateforme",PhotonTargets.All, "plateforme1", "la zone 1", 40);
+                photonview.RPC("RPC_WarningPlateforme",PhotonTargets.All, "plateforme1", "la zone 1", 40, Time.timeSinceLevelLoad);
             }
             
             if (Time.timeSinceLevelLoad >= 40 && Time.timeSinceLevelLoad < 42)
@@ -33,7 +33,7 @@ public class LevelDesigner : MonoBehaviour
             if (Time.timeSinceLevelLoad > 80 && Time.timeSinceLevelLoad < 100)
             {
 
-                photonview.RPC("RPC_WarningPlateforme",PhotonTargets.All, "plateforme2", "la zone 2", 100);
+                photonview.RPC("RPC_WarningPlateforme",PhotonTargets.All, "plateforme2", "la zone 2", 100, Time.timeSinceLevelLoad);
             }
             
             if (Time.timeSinceLevelLoad >= 100)
@@ -46,7 +46,7 @@ public class LevelDesigner : MonoBehaviour
             if (Time.timeSinceLevelLoad > 340 && Time.timeSinceLevelLoad < 360)
             {
 
-                photonview.RPC("RPC_WarningPlateforme",PhotonTargets.All, "plateforme3", "la zone finale", 360);
+                photonview.RPC("RPC_WarningPlateforme",PhotonTargets.All, "plateforme3", "la zone finale", 360, Time.timeSinceLevelLoad);
             }
             
             if (Time.timeSinceLevelLoad >= 360)
@@ -82,9 +82,9 @@ public class LevelDesigner : MonoBehaviour
     }
     
     [PunRPC]
-    private void RPC_WarningPlateforme(String tag, string zone, int secDisparition) {
+    private void RPC_WarningPlateforme(String tag, string zone, int secDisparition, float timerMasterClient) {
 
-            warning.text = "Attention, les plateformes de " + zone + " disparaissent dans: " + ((int)(secDisparition - Time.timeSinceLevelLoad)).ToString();
+            warning.text = "Attention, les plateformes de " + zone + " disparaissent dans: " + ((int)(secDisparition - timerMasterClient)).ToString();
 
 
     }

@@ -143,68 +143,44 @@ public class ItemGeneratorScript : MonoBehaviour
         
         if (PhotonNetwork.isMasterClient && PlayerNetwork.instance.allConnected == 1 && flag == 0)
         {
-            float x = -19;
-            while (appleLibres.Count != 0) {
-                    
-                x = x + 3;
-                Vector3 position = new Vector3(x, -0.9f, -20.0f);
-                photonView.RPC("GenererAppleRPC", PhotonTargets.All, position);
-                Debug.Log("GenererAppleRPC appelé taille de apple item  " + appleLibres.Count);
+         
+            
+
+
+                foreach (GameObject pommeSpawner in GameObject.FindGameObjectsWithTag("PommeSpawner"))
+                {
+                    Vector3 position = pommeSpawner.transform.position;
+                    photonView.RPC("GenererAppleRPC", PhotonTargets.All, position);
+                    Debug.Log("GenererAppleRPC appelé taille de apple item  " + appleLibres.Count);
+                }
                 
-            }
-
-            x = 0 ;
-            while (bananaLibres.Count != 0) {
-
-                x = x + 3;
-                Vector3 position = new Vector3(x, -0.2f, -20.0f);
-                photonView.RPC("GenererBananaRPC", PhotonTargets.All, position);
-                Debug.Log("GenererBananaRPC appelé taille de banana item  " + bananaLibres.Count);
-
-            }
 
 
-            x = 0 ;
-            while (greenPotionLibres.Count != 0) {
+          
+            
 
-                x = x + 3;
-                Vector3 position = new Vector3(x, -0.3f, -20.2f);
-                photonView.RPC("GenererGreenPRPC", PhotonTargets.All, position);
-                Debug.Log("GenererGreenPRPC appelé taille de p. green item  " + greenPotionLibres.Count);
+                foreach (GameObject bananeSpawner in GameObject.FindGameObjectsWithTag("BananeSpawner"))
+                {
+                    
+                    Vector3 position = bananeSpawner.transform.position;
+                    photonView.RPC("GenererBananaRPC", PhotonTargets.All, position);
+                    Debug.Log("GenererBananaRPC appelé taille de banana item  " + bananaLibres.Count);
 
-            }
+                }
+                
+                foreach (GameObject redPotSpawner in GameObject.FindGameObjectsWithTag("RedPotSpawner"))
+                {
+                    
+                    Vector3 position = redPotSpawner.transform.position;
+                    photonView.RPC("GenererRedPRPC", PhotonTargets.All, position);
+                    Debug.Log("GenererRedPRPC appelé taille de redpot item  " + redPotionLibres.Count);
+
+                }
 
 
 
-            x = 0 ;
-            while (orangePotionLibres.Count != 0) {
 
-                x = x + 3;
-                Vector3 position = new Vector3(x, -0.5f, -21.0f);
-                photonView.RPC("GenererOrangePRPC", PhotonTargets.All, position);
-                Debug.Log("GenererOrangePRPC appelé taille de p. orange item  " + orangePotionLibres.Count);
-
-            }
-
-            x = 0 ;
-            while (redPotionLibres.Count != 0) {
-
-                x = x + 3;
-                Vector3 position = new Vector3(x, -0.4f, -21.5f);
-                photonView.RPC("GenererRedPRPC", PhotonTargets.All, position);
-                Debug.Log("GenererRedPRPC appelé taille de p. red item  " + redPotionLibres.Count);
-
-            }
-
-            x = 0 ;
-            while (superGunLibres.Count != 0) {
-
-                x = x + 3;
-                Vector3 position = new Vector3(x, -0.7f, -22.0f);
-                photonView.RPC("GenererSuperGunRPC", PhotonTargets.All, position);
-                Debug.Log("GenererSuperGunRPC appelé taille de supergun item  " + superGunLibres.Count);
-
-            }
+           
             
             
             flag = 1;

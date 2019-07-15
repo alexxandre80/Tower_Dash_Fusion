@@ -38,6 +38,10 @@ TagManager:
   - plateforme2
   - plateforme3
 
+  - PommeSpawner
+  - BananeSpawner
+  - RedPotSpawner
+
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Experimental.Rendering;
 
 public class MoveCubeScript : MonoBehaviour
@@ -15,7 +16,6 @@ public class MoveCubeScript : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     
-    
     private PhotonView photonview;
     
     [SerializeField]
@@ -24,10 +24,6 @@ public class MoveCubeScript : MonoBehaviour
     [SerializeField] 
     private Rigidbody playerRigidBody;
     
-    
-    
-
-
     private Vector3 targetPosition;
     private Quaternion TargetRotation;
    //public float health;
@@ -43,6 +39,9 @@ public class MoveCubeScript : MonoBehaviour
    private float speed;
    public VariableJoystick variableJoystick;
 
+   public float jumpforce = 5f;
+
+
     /*public float lookSpeed = 10;
    private Vector3 curLoc;
     private Vector3 prevLoc;
@@ -50,12 +49,14 @@ public class MoveCubeScript : MonoBehaviour
 
     //public float turnSpeed = 50f;
 
+
     
     
     void Awake()
     {
         photonview = GetComponent<PhotonView>();
         variableJoystick = GameObject.FindWithTag("Joystick").GetComponent<VariableJoystick>();
+        //boutonJump = GameObject.FindWithTag("boutonJump").GetComponent<Button>();
 
     }
     
@@ -141,6 +142,10 @@ public class MoveCubeScript : MonoBehaviour
         //transform.position = curLoc;
 
 
+    public void Jump()
+    {
+        playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x,jumpforce);
+    }
 
     [PunRPC]
     private void RPC_AskToFire(PhotonPlayer unPhotonPlayer)
@@ -149,7 +154,7 @@ public class MoveCubeScript : MonoBehaviour
         photonview.RPC("RPC_Fire", PhotonTargets.All, unPhotonPlayer);
         
     }
-
+    
 
     [PunRPC]
     private void RPC_Fire(PhotonPlayer unPhotonPlayer)

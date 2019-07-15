@@ -31,12 +31,17 @@ TagManager:
   - Plateforme Verticale
   - Plateforme
   - Joystick
+
+  - boutonJump
+
   - plateforme1
   - plateforme2
   - plateforme3
+
   - PommeSpawner
   - BananeSpawner
   - RedPotSpawner
+
   layers:
   - Default
   - TransparentFX

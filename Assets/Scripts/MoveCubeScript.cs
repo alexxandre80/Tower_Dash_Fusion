@@ -40,6 +40,7 @@ public class MoveCubeScript : MonoBehaviour
    public VariableJoystick variableJoystick;
    public Button JumpButton;
    public Button FireButton;
+   public int flagbutton = 0;
 
 
     /*public float lookSpeed = 10;
@@ -68,6 +69,16 @@ public class MoveCubeScript : MonoBehaviour
         if (photonview.isMine)
         {
             checkInput();
+
+            if (flagbutton == 0)
+            {
+                JumpButton.onClick.AddListener(() => jump());
+                FireButton.onClick.AddListener(() => fire());
+
+                flagbutton = 1;
+            }
+            
+            
         }
         
         //Pour tous les autres on utilise smoothSyncMovement qui s'occupe de rendre les mouvement des autres joueurs fluides
@@ -125,8 +136,6 @@ public class MoveCubeScript : MonoBehaviour
         transform.position += transform.forward * (vertical * moveSpeed * Time.deltaTime);
         transform.Rotate(new Vector3(0,horizontal* rotateSpeed * Time.deltaTime, 0));
         
-        JumpButton.onClick.AddListener(() => jump());
-        FireButton.onClick.AddListener(() => fire());
 
              if (Input.GetKeyDown(KeyCode.K))
         {

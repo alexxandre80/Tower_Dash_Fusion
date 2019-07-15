@@ -145,11 +145,15 @@ public class ItemGeneratorScript : MonoBehaviour
         {
             float x = -19;
             while (appleLibres.Count != 0) {
-                    
-                x = x + 3;
-                Vector3 position = new Vector3(x, -0.9f, -20.0f);
-                photonView.RPC("GenererAppleRPC", PhotonTargets.All, position);
-                Debug.Log("GenererAppleRPC appelé taille de apple item  " + appleLibres.Count);
+
+
+                foreach (GameObject pommeSpawner in GameObject.FindGameObjectsWithTag("PommeSpawner"))
+                {
+                    Vector3 position = pommeSpawner.transform.position;
+                    photonView.RPC("GenererAppleRPC", PhotonTargets.All, position);
+                    Debug.Log("GenererAppleRPC appelé taille de apple item  " + appleLibres.Count);
+                }
+                
                 
             }
 

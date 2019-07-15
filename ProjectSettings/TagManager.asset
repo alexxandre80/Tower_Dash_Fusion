@@ -34,6 +34,7 @@ TagManager:
   - plateforme1
   - plateforme2
   - plateforme3
+  - PommeSpawner
   layers:
   - Default
   - TransparentFX

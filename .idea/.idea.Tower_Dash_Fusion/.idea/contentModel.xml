@@ -348,6 +348,7 @@
           <e p="MoveCubeScript.cs" t="Include" />
           <e p="MovingTransformOfNonKinematicObjectScript.cs" t="Include" />
           <e p="OfflineIntentReceiver.cs" t="Include" />
+          <e p="OptionsScript.cs" t="Include" />
           <e p="PaperBox.cs" t="Include" />
           <e p="PlayButton.cs" t="Include" />
           <e p="PlayerJumps.cs" t="Include" />
@@ -355,6 +356,7 @@
           <e p="PUN" t="Include">
             <e p="GUIController.cs" t="Include" />
           </e>
+          <e p="QuitButton.cs" t="Include" />
           <e p="RealisticishJumpScript.cs" t="Include" />
           <e p="RespwanZone.cs" t="Include" />
           <e p="RockBox.cs" t="Include" />

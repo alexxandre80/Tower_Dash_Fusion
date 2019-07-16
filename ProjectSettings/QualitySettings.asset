@@ -4,7 +4,7 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 5
+  m_CurrentQuality: 3
   m_QualitySettings:
   - serializedVersion: 2
     name: Fastest
@@ -42,7 +42,7 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
   - serializedVersion: 2
-    name: Fast
+    name: Faible
     pixelLightCount: 0
     shadows: 0
     shadowResolution: 0
@@ -112,7 +112,7 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
   - serializedVersion: 2
-    name: Good
+    name: Moyen
     pixelLightCount: 2
     shadows: 2
     shadowResolution: 1
@@ -147,7 +147,7 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
   - serializedVersion: 2
-    name: Beautiful
+    name: Fort
     pixelLightCount: 3
     shadows: 2
     shadowResolution: 2
@@ -216,4 +216,7 @@ QualitySettings:
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality: {}
+  m_PerPlatformDefaultQuality:
+    Android: 1
+    Standalone: 4
+    WebGL: 3

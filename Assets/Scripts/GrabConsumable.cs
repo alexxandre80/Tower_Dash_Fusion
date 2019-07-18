@@ -15,6 +15,8 @@ public class GrabConsumable : MonoBehaviour
 	
 	
 	
+	
+	
 	private void Awake()
 	{
 		photonView = GetComponent<PhotonView>();
@@ -40,7 +42,11 @@ public class GrabConsumable : MonoBehaviour
 				    photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 0);
 				    
 				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "apple");
-				    
+				    if (DataCollector.Instance().isActivated())
+				    {
+					    DataCollector.RegisterObjectPickedUp(col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+					    photonView.RPC("RPC_AddDataObject",PhotonTargets.Others, col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+				    }
 				break;
 			    
 			    case "bullet": //bullets
@@ -50,6 +56,13 @@ public class GrabConsumable : MonoBehaviour
 
 				    if (PlayerManagement.Instance.listeInfoJoueurs[index].health <= 0)
 				    {
+					    if (DataCollector.Instance().isActivated()) {
+						    DataCollector.RegisterDeath(transform.position, Time.timeSinceLevelLoad,
+						    photonView.OwnerActorNr, "shot");
+						    photonView.RPC("RPC_AddDataDeath",PhotonTargets.Others, transform.position, Time.timeSinceLevelLoad,
+							    photonView.OwnerActorNr, "shot");
+					    }
+					    
 					    destruction();
 				    }
 
@@ -61,10 +74,16 @@ public class GrabConsumable : MonoBehaviour
 					photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 1);
 				    
 				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "banana");
-
-	                //Inventory_script.tabSlots[1] = Inventory_script.tabSlots[1] + 1; 
-	                //Inventory_script.UpdateTXT(1,Inventory_script.tabSlots[1].ToString());
-	                //Destroy (col.gameObject);
+					
+					// Collecte de données sur le ramassage d'objet
+					if (DataCollector.Instance().isActivated())
+						if (DataCollector.Instance().isActivated())
+						{
+							DataCollector.RegisterObjectPickedUp(col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+							photonView.RPC("RPC_AddDataObject",PhotonTargets.Others, col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+						}
+					
+	                
 	            break;
 
 
@@ -72,15 +91,28 @@ public class GrabConsumable : MonoBehaviour
 
 	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 2);
 				    
-				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "greenP");
+				    
+	                photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "greenP");
+					
+	                if (DataCollector.Instance().isActivated())
+	                {
+		                DataCollector.RegisterObjectPickedUp(col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+		                photonView.RPC("RPC_AddDataObject",PhotonTargets.Others, col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+	                }
 	            break;
+	            
 
 	            case "orangeP": //orangePotion
 
 	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 3);
 				    
 				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "orangeP");
-
+					
+	                if (DataCollector.Instance().isActivated())
+	                {
+		                DataCollector.RegisterObjectPickedUp(col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+		                photonView.RPC("RPC_AddDataObject",PhotonTargets.Others, col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+	                }
 	            break;
 
 	            case "redP": //redPotion
@@ -88,7 +120,12 @@ public class GrabConsumable : MonoBehaviour
 	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 4);
 				    
 				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "redP");
-
+					
+	                if (DataCollector.Instance().isActivated())
+	                {
+		                DataCollector.RegisterObjectPickedUp(col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+		                photonView.RPC("RPC_AddDataObject",PhotonTargets.Others, col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+	                }
 	            break;
 
 	            case "superGun": //superGun
@@ -96,7 +133,13 @@ public class GrabConsumable : MonoBehaviour
 	            	photonView.RPC("RPC_AddInInventory",PhotonTargets.MasterClient, photonView.owner, 5);
 				    
 				    photonView.RPC("RPC_returnToPool",PhotonTargets.All, col.GetComponent<ItemExposerScript>().GetId(), "superGun");
-
+					
+	                if (DataCollector.Instance().isActivated())
+	                {
+		                DataCollector.RegisterObjectPickedUp(col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+		                photonView.RPC("RPC_AddDataObject",PhotonTargets.Others, col.gameObject.transform.position,  Time.timeSinceLevelLoad, col.gameObject.tag, photonView.OwnerActorNr);
+	                }
+	            
 	            break;
 
 
@@ -150,6 +193,8 @@ public class GrabConsumable : MonoBehaviour
 					    GameObject.FindGameObjectsWithTag("TopPanel")[0].GetComponent<EndGameUI>().text.text = "Winner !";
 					    Debug.Log("on rentre dans le if d'affichage de menu");
 					    quitMenu.SetActive(true);
+
+					    DataCollector.Instance().CreateText();
 				    }
 			    
 		    }
@@ -295,5 +340,23 @@ public class GrabConsumable : MonoBehaviour
 
 		}
     }
+
+    [PunRPC]
+    private void RPC_AddDataObject(Vector3 pos, float timeStamp, string objectTag, int player)
+    {
+	    
+	    DataCollector.RegisterObjectPickedUp(pos,  timeStamp, objectTag, player);
+	    
+    }
+    
+	
+	[PunRPC]
+    private void RPC_AddDataDeath(Vector3 pos, float timeStamp, int player, string death)
+    {
+	    
+	    DataCollector.RegisterDeath(pos,  timeStamp, player, death);
+	    
+    }
+
 }
 

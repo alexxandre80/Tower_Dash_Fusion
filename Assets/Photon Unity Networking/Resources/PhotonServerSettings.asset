@@ -79,4 +79,8 @@ MonoBehaviour:
   - RPC_right
   - RPC_AskToJump
   - RPC_jump
+  - RPC_AddData
+  - RPC_AddDataObject
+  - RPC_AddDataDeath
+  - RPC_AddDataSpringBoard
   DisableAutoOpenWizard: 1

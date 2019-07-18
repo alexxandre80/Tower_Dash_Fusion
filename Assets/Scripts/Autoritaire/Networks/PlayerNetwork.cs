@@ -66,6 +66,7 @@ public class PlayerNetwork : MonoBehaviour
             Quaternion.identity, 0);*/
         
         photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player);
+       
         photonView.RPC("RPC_LoadGameOthers", PhotonTargets.Others);
         
     }
@@ -87,6 +88,8 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     private void RPC_LoadedGameScene(PhotonPlayer unPhotonPlayer)
     {
+        
+        
         
         
         // Le master client complète la liste à chaque fois qu'un joueur rejoins la partie

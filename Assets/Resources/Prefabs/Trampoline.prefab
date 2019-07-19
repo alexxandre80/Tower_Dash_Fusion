@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 86250584086002225}
   m_Layer: 0
   m_Name: Trampoline
-  m_TagString: Untagged
+  m_TagString: Trampoline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   codeSpringBoard: 0
   nbUtilisation: 0
   photonView: {fileID: 86250584086002225}
+  textNBU: {fileID: 4134303932854009701}
 --- !u!65 &5926303532711871022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -346,4 +347,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Energy 100%
+  m_Text: 

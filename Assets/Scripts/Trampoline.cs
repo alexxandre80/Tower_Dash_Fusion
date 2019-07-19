@@ -10,43 +10,21 @@ public class Trampoline : MonoBehaviour
     private float rebound;
     
     [SerializeField]
-    private int codeSpringBoard;
+    public int codeSpringBoard;
     
     [SerializeField]
-    private int nbUtilisation;
+    public int nbUtilisation;
     
     [SerializeField]
     private PhotonView photonView;
     
     [SerializeField]
-    private Text textNBU;
+    public Text textNBU;
     
     private void Awake()
     {
         photonView = GetComponent<PhotonView>();
-        
-        if (DataCollector.Instance().isActivated() && PhotonNetwork.isMasterClient)
-        {
-            string path = "SpringBoard.txt";
-            if (File.Exists(path))
-            {
-
-                string dataAsJson = File.ReadAllText(path);
-                string[] split = dataAsJson.Split('*');
-            
-                foreach (string springBoardData in split)
-                {
-                    SpringBoardData laSpringBoardData = JsonUtility.FromJson<SpringBoardData>(springBoardData);
-
-                    if (laSpringBoardData.code == codeSpringBoard)
-                    {
-                        nbUtilisation = nbUtilisation + 1;
-                    }
-
-                    
-                }
-            }
-        }
+     
 		
     }
     
@@ -61,17 +39,17 @@ public class Trampoline : MonoBehaviour
 
         if (PhotonNetwork.isMasterClient)
         {
-            photonView.RPC("RPC_AddDataSpringBoard",PhotonTargets.All, other.gameObject.transform.position,  codeSpringBoard);
+            photonView.RPC("RPC_AddDataSpringBoard",PhotonTargets.All,  codeSpringBoard);
             
         }
     }
     
     
     [PunRPC]
-    private void RPC_AddDataSpringBoard(Vector3 pos, int code)
+    private void RPC_AddDataSpringBoard( int code)
     {
 	    
-        DataCollector.RegisterSpringBoardUse(pos,  code);
+        DataCollector.RegisterSpringBoardUse(code);
 	    
     }
 }

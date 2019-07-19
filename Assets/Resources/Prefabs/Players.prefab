@@ -1,17 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1074284869039431624 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1186317167085608124, guid: ceafb317c63c53345bb0791d24006093,
-    type: 3}
-  m_PrefabInstance: {fileID: 2206206674551292788}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1074284869039431631 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1186317167085608123, guid: ceafb317c63c53345bb0791d24006093,
-    type: 3}
-  m_PrefabInstance: {fileID: 2206206674551292788}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2598264441024853261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1719,6 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a386ac0d248022243a5cf3196b9d2d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playersPhoton: {fileID: 3037991951244208865}
   joueurTransform: {fileID: 47839759831081519}
   move: {fileID: 8728962300472926010}
 --- !u!1 &7472968603631433358
@@ -1972,17 +1961,8 @@ MonoBehaviour:
   bulletSpawn: {fileID: 6911317154312698991}
   allowToJump: 0
   playerRigidBody: {fileID: 4992671663983968118}
-  health: 0
-  maxHealth: 0
-  notoriety: 0
-  damageStone: 0
-  damagePaper: 0
-  damageScissor: 0
-  inFight: 0
-  movementSpeed: 0
   speed: 20
   variableJoystick: {fileID: 0}
-
 --- !u!114 &3037991951244208865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2779,3 +2759,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceafb317c63c53345bb0791d24006093, type: 3}
+--- !u!1 &1074284869039431624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1186317167085608124, guid: ceafb317c63c53345bb0791d24006093,
+    type: 3}
+  m_PrefabInstance: {fileID: 2206206674551292788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1074284869039431631 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1186317167085608123, guid: ceafb317c63c53345bb0791d24006093,
+    type: 3}
+  m_PrefabInstance: {fileID: 2206206674551292788}
+  m_PrefabAsset: {fileID: 0}

@@ -8,12 +8,15 @@ using UnityEngine;
 
 public class Child : MonoBehaviour
 {
+    [SerializeField] private PhotonView playersPhoton;
 
     [SerializeField]
     Transform joueurTransform;
 
     [SerializeField]
     private MoveCubeScript move;
+    
+    
     
     
     
@@ -36,6 +39,9 @@ public class Child : MonoBehaviour
             
         }
         move.setAllowToJump(true);
+        
+
+        
 
 
     }
@@ -82,5 +88,6 @@ public class Child : MonoBehaviour
 
 
     }
+    
 }
 

@@ -319,6 +319,7 @@
           <e p="Cameralibre.cs" t="Include" />
           <e p="CameraMotor.cs" t="Include" />
           <e p="Child.cs" t="Include" />
+          <e p="chute.cs" t="Include" />
           <e p="DataCollector" t="Include">
             <e p="DataCollector.cs" t="Include" />
             <e p="DataVault.cs" t="Include" />

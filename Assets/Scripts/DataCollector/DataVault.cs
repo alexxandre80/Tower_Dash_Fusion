@@ -63,8 +63,8 @@ public class DataVault : ScriptableObject {
     
     //Fonction collecte jump
     
-    public void AddSpringboardData(Vector3 pos, int unCode) {
-        this.SpringBoardData.Add(new SpringBoardData(){pos = pos, PartyTime = Time.timeSinceLevelLoad, code = unCode});
+    public void AddSpringboardData(int unCode) {
+        this.SpringBoardData.Add(new SpringBoardData(){code = unCode});
     }
 
     
@@ -88,12 +88,20 @@ public class DeathData {
 
 }
 
-[Serializable]
+
+
+
+[System.Serializable]
 public class SpringBoardData {
     
-    public Vector3 pos;
-    public float PartyTime;
+
     public int code;
+    
+    public static SpringBoardData CreateFromJSON(string jsonString)
+    {
+        return JsonUtility.FromJson<SpringBoardData>(jsonString);
+    }
+ 
 
 }
 

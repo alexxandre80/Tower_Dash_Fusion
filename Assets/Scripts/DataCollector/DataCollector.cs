@@ -29,10 +29,55 @@ public class DataCollector : MonoBehaviour {
         if (this.resetData) {
             instance.dataVault.ResetData();
         }
+        
+        
 
         if (isActivated() && PhotonNetwork.isMasterClient)
         {
-            string path = "death.txt";
+            
+            string path = "SpringBoard.txt";
+            if (File.Exists(path))
+            {
+                
+
+                string dataAsJson = File.ReadAllText(path);
+                string[] split = dataAsJson.Split('*');
+
+                
+                foreach (string springBoardData in split)
+                {
+                    if (!(springBoardData == ""))
+                    {
+                        UnityEngine.Debug.Log(springBoardData);
+                       
+                        foreach (GameObject trampoline in GameObject.FindGameObjectsWithTag("Trampoline"))
+                        {
+                            UnityEngine.Debug.Log("MISE A JOUR TRAMPOLINE");
+                        
+                            if (SpringBoardData.CreateFromJSON(springBoardData).code == trampoline.GetComponent<Trampoline>().codeSpringBoard)
+                            {
+                                trampoline.GetComponent<Trampoline>().nbUtilisation =
+                                    trampoline.GetComponent<Trampoline>().nbUtilisation + 1;
+
+                                trampoline.GetComponent<Trampoline>().textNBU.text =
+                                    trampoline.GetComponent<Trampoline>().nbUtilisation.ToString();
+
+
+
+
+                            }
+                        }
+                    }
+                    
+                    
+
+                        
+
+                    
+                }
+            }
+            
+             path = "death.txt";
             if (File.Exists(path))
             {
              
@@ -42,22 +87,36 @@ public class DataCollector : MonoBehaviour {
             
                 foreach (string deathdata in split)
                 {
-                    DeathData ladeathdata = JsonUtility.FromJson<DeathData>(deathdata);
-
-                    if (ladeathdata.death == "shot")
+                    if(!(deathdata==""))
                     {
-                        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "DCGunDeath"), ladeathdata.deathPos,
-                            Quaternion.identity, 0);
-                    }
-
-                    else
-                    {
-                        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "DCFallDeath"), ladeathdata.deathPos,
-                            Quaternion.identity, 0);
-                    }
+                        DeathData ladeathdata = JsonUtility.FromJson<DeathData>(deathdata);
                     
+                    
+
+                        if (ladeathdata.death == "shot")
+                        {
+                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "DCGunDeath"), ladeathdata.deathPos,
+                                Quaternion.identity, 0);
+                        
+                        }
+
+                        else
+                        {
+                            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "DCFallDeath"), ladeathdata.deathPos,
+                                Quaternion.identity, 0);
+                        }
+
+                    }
+                        
+                   
                 }
+                
+                
             }
+            
+            
+            
+            
         }
         
         
@@ -78,17 +137,28 @@ public class DataCollector : MonoBehaviour {
         if (instance != null && instance.dataVault != null)
         {
             instance.dataVault.AddDeathData(pos,  timeStamp,  player,  death);
+
+            if (death == "shot")
+            {
+                PhotonNetwork.Instantiate(Path.Combine("Prefabs", "DCGunDeath"), pos,
+                    Quaternion.identity, 0);
+            }
+
+            else
+            {
+                PhotonNetwork.Instantiate(Path.Combine("Prefabs", "DCFallDeath"), pos,
+                    Quaternion.identity, 0);
+            }
             
-            PhotonNetwork.Instantiate(Path.Combine("Prefabs", "DCGunDeath"), pos,
-                Quaternion.identity, 0);
+            
         }
         
     }
     
-    public static void RegisterSpringBoardUse(Vector3 pos, int code) {
+    public static void RegisterSpringBoardUse(int code) {
         if (instance != null && instance.dataVault != null)
         {
-            instance.dataVault.AddSpringboardData(pos, code);
+            instance.dataVault.AddSpringboardData(code);
             
         }
         
